@@ -24,7 +24,7 @@ int main()
       number2 = temp;
     }
 
-    // 3. Prompt the student to answer “what is number1 – number2?”
+    // 3. Prompt the student to answer what is number1  number2?
     cout << "What is " << number1 << " - " << number2 << "? ";
     int answer;
     cin >> answer;

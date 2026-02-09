@@ -13,11 +13,14 @@ int main()
   if (number % 2 == 0 || number % 3 == 0)
     cout << number << " is divisible by 2 or 3." << endl;
 
-  if ((number % 2 == 0 || number % 3 == 0) &&
-       !(number % 2 == 0 && number % 3 == 0))
+  if ((number % 2 == 0 || number % 3 == 0) && !(number % 2 == 0 && number % 3 == 0))
+  {
     cout << number << " divisible by 2 or 3, but not both." << endl;
+  }
   else
-	cout << "Not divisible by 2 or 3" << endl;
-	
+  {
+	  cout << "Not divisible by 2 or 3" << endl;
+  }
+
   return(0);
 }
