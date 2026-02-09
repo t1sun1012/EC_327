@@ -53,7 +53,16 @@ int main()
 upcasting -> Widening
 downcasting -> narrowing
 
+
+## Example
+
 ```C++
 if (answer == 'Y')
     date += 1;
+```
+
+```C++
+double u = 2.6;
+double g = u++; // first assign, then increment
+double g = ++u; // first increment, then assign
 ```

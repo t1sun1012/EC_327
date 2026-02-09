@@ -18,5 +18,10 @@ int main() {
   cout << area << endl;
   cout << sizeof(int) << " " << sizeof(long double) << endl;
 
+  short u = 32767;
+  cout << u << endl;
+  u++;
+  cout << u << endl;
+
   return 0;
 }
