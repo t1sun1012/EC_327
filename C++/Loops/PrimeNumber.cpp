@@ -17,6 +17,10 @@ int main()
     bool isPrime = true; // Is the current number prime?
 
     // Test if number is prime
+    // first element is initial is executed (one time) before the execution of the code block
+    // second element is defines the condition for executing the code block.
+    // third element is action  is executed (every time) after the code block has been executed.
+    
     for (int divisor = 2; divisor <= number / 2; divisor++)
     {
       if (number % divisor == 0)

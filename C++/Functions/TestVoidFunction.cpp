@@ -2,7 +2,7 @@
 using namespace std;
 
 /** Print grade for the score */
-void printGrade(double score)
+void printGrade(double score) //void not return anything
 {
   if (score < 0 || score > 100) {
     cout << "Invalid score";

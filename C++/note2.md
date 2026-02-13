@@ -6,7 +6,7 @@
     - Syntax vs Semantics
 - Compilation Flow
 
-Next time: function
+
 
 ```C++
 // preprocessing directive
@@ -53,6 +53,10 @@ int main()
 upcasting -> Widening
 downcasting -> narrowing
 
+0 to 0.0
+0.0 to 0
+
+
 
 ## Example
 
@@ -66,3 +70,80 @@ double u = 2.6;
 double g = u++; // first assign, then increment
 double g = ++u; // first increment, then assign
 ```
+
+
+
+### Switch Loop
+
+Sequantial evaluation in switch
+Variable:
+- int -> any integers
+- bool -> 0,1
+- char -> ASCII value
+
+```C++
+switch(variable) // variable evaluate to int
+{
+    // no expression after case, integer after case
+    case 0: statement;
+            statement;
+            break;
+
+            // prevent "fall through" using break
+
+    case 1: statement;
+            statement;
+            break;
+
+    default: statements;
+}
+```
+
+
+## Functions
+Why function:
+- saves code and spce
+- modular
+- easy to debug
+
+However, 
+- due to context switching, functions can be slower
+- Caller save vs. Callee save
+
+Three thngs with functions
+- define
+- declare
+- invoke (call)
+
+```C++
+// max is the function name, num1 and num2 are the parameters
+// need a return type before the function name
+
+int max(int num1, int num2) // defining a function
+{
+    int result;
+    if (num1 > num2) {
+        result = num1;
+    }
+    else {
+        result = num2;
+    }
+    return result;
+}
+// function declared aftr the body of the function
+```
+
+
+```C++
+int val = 2;
+int best = 4;
+int cool = max(val, best); // invoke/call a function
+// pass by value 
+```
+
+### Function Overloading
+- same name
+- different argument
+    - types
+    - numbers
+- cannot do it on Return type, which means same name, same argument, different return type is not allowed.
