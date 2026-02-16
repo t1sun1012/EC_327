@@ -10,14 +10,11 @@ int main() {
     // get the input values to coordinates variables
     cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 
-    // compute the parameters for line equation y = mx + c
-    float m = (y2-y1) / (x2-x1);
-    float c1 = y1 - m*x1;
-    
+
     // compute the parameters for line equation ax + by + c = 0
-    float a = -m;
-    float b = 1;
-    float c = -c1;
+    float a = y1 - y2;
+    float b = x2 - x1;
+    float c = x1*y2 - x2*y1;
 
     // compute shortest distance
     float d = abs(a*x3 + b*y3 + c) / sqrt(pow(a,2) + pow(b,2));

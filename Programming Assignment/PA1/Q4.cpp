@@ -52,7 +52,7 @@ int main() {
 
                 case 2:
                 cout << "Computer chooses: Grass" << endl;
-                cout << "You loss!" << endl;
+                cout << "You lose!" << endl;
                 break;
             }
         break;

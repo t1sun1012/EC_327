@@ -9,21 +9,21 @@ int main() {
     int number2;
     cin >> number2;
 
-    // initialize quotients and hamming_distance
-    int hamming_distance;
+    // initialize quotients and hamming_distance = 0
+    int hamming_distance = 0;
     int quotient1;
     int quotient2;
     int remainder1;
     int remainder2;
 
 
-    // initialize quotient to numbers and for loop will continue if either quotient1 or quotient2 is not zero. meaning to finish the find remainder process untill both quotients are zero.
+    // initialize quotient to numbers and for loop will continue if either quotient1 or quotient2 is not zero. meaning to finish the finding remainder process untill both quotients are zero.
     for (quotient1 = number1, quotient2 = number2; (quotient1 != 0) || (quotient2 != 0);) {
         remainder1 = quotient1 % 3;
         remainder2 = quotient2 % 3;
 
-        quotient1 = quotient1 / 3;
-        quotient2 = quotient2 / 3;
+        quotient1 = static_cast<int>(quotient1 / 3);
+        quotient2 = static_cast<int>(quotient2 / 3);
         
         // compare remainder, if not equal, hamming_distance +1
         if (remainder1 != remainder2) {

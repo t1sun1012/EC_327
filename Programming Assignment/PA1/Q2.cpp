@@ -14,11 +14,19 @@ int main() {
 
     cout << "Enter tip level (1=10%, 2=15%, 3=20%, 4=25%):";
     int tip_level;
-    cin >> tip_level;
+    // for edge case where the user did not enter correct tip level
+    while (tip_level < 1 || tip_level > 4) {
+        cout << "Invalid tip level. Enter tip level (1=10%, 2=15%, 3=20%, 4=25%):";
+        cin >> tip_level;
+    }
+
 
     cout << "Tip on post-tax amount? (1=yes, 2=no):";
     int post_tax;
-    cin >> post_tax;
+    while (post_tax != 1 && post_tax != 2) {
+        cout << "Invalid yes or no on post-tax amount. Please enter 1 for yes or 2 for no:";
+        cin >> post_tax;
+    }
 
     // compute the total bill pre-tip
     float total_bill_pre_tip = base * (1+(tax_rate / 100));
