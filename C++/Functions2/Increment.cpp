@@ -12,6 +12,6 @@ int main()
   cout << "Before the call, x is " << x << endl;
   increment(x);
   cout << "after the call, x is " << x << endl;
-
+  // x = 1 here because the function is not returned anything
   return 0;
 }

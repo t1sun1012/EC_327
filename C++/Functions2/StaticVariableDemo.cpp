@@ -12,8 +12,8 @@ int main()
 
 void t1()
 {
-  static int x = 1;
-  int y = 1;
+  static int x = 1; // only initialize once when calling the function in the first time
+  int y = 1; // reinitialie if the function is called again
   x++;
   y++;
   cout << "x is " << x << endl;

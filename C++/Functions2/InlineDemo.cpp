@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-inline void f(int month, int year) {
+inline void f(int month, int year) { // inline paste the code when function is call, prevent jumping behavior
   cout << "month is " << month << endl;
   cout << "year is " << year << endl;
 }
