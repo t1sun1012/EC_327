@@ -1,0 +1,18 @@
+	In the main program: 
+
+- An integer array of 20 elements will be declared and can be initialized as follows:
+	
+	int array[20] = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1}; //it is symmetric
+
+- Two integer pointers will be declared (pE and pH)
+
+	pH will point to the head of the array
+	pE will point to the end of the array
+
+- pH, pE and N (20) will be passed to an IsSymmetric function
+
+	In this function, the array should be tested if it is symmettric. Function will return TRUE if 		symmetric, or FALSE otherwise. 
+	
+	This function will have a for loop and each iteration will compare the one element from the 		beginning of the array with the one in the end. (Compare array[0] with array[19], then a[1] with 		a[18]...)
+
+	NOTE: Instead of using brackets to access elements of the array, they will be required to use pH 	and pE (*pE or *pH). For the next iteration, they need to increment pH and decrement pE. Briefly, 	aim is to manipulate pointers to trace array and not to use brackets [].
