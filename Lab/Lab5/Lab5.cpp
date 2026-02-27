@@ -12,6 +12,7 @@ void reverse_inplace(char* str);
 char* reverse(char* str);
 
 
+/*
 
 int main() {
     // test for the functions
@@ -24,12 +25,12 @@ int main() {
     cout << word_length(ptest) << endl;
 
     reverse_inplace(ptest);
-    cout << ptest << endl;
+    cout << test << endl;
 
     
     cout << reverse(ptest) << endl;
 }
-
+*/
 
 
 
@@ -45,7 +46,7 @@ void reverse_inplace(char* str) {
 
     char temp;
 
-    for (int i = 0, j = length; i < (length+1) ; i++, j-- ) {
+    for (int i = 0, j = length; i < j ; i++, j-- ) {
         temp = str[i];
         str[i] = str[j];
         str[j] = temp;
@@ -54,6 +55,7 @@ void reverse_inplace(char* str) {
 
 
 char* reverse(char* str) {
+    // real length is without the null \0
     int length = word_length(str) - 1;
 
     //new string on the heap to store the result, same length as original string
