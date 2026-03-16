@@ -1,5 +1,8 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <cmath>
+
 
 #include "pa2Functions.h"
 
@@ -96,14 +99,14 @@ main() {
             case 'u':
                 // area of Square
                 double number = input_parameter_double();
-                cout << areaCircle(number) << endl;
+                cout << areaSquare(number) << endl;
                 break;
 
             case 'C':
             case 'c':
                 // area of Circle
                 double number = input_parameter_double();
-                cout << areaSquare(number) << endl;
+                cout << areaCircle(number) << endl;
                 break;
 
             case 'E':
