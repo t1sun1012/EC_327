@@ -35,7 +35,7 @@ int main() {
     // read file into an array
     int myArray[1000];
     int size = 0;
-    cout << "Reading file: data.txt" << endl;
+    cout << "Reading file: numbers.txt" << endl;
     ReadData("numbers.txt", size, myArray);
 
     // print the size
