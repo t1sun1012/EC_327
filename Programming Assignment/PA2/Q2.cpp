@@ -30,7 +30,7 @@ int main() {
 
     // create data file
     cout << "Writing file: data.txt" << endl;
-    WriteRandomData(5, 10, "data.txt");
+    WriteRandomData(5, 10, "random_data.txt");
 
     // read file into an array
     int myArray[1000];
