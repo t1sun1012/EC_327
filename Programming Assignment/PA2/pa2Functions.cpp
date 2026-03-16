@@ -52,7 +52,7 @@ void writeDataToFile(const char *file) {
         cout << "cannot open output file" << endl;
         writetofile = false;
     }
-    
+
     writetofile = true;
     cout << "Writing output to file: " << file << endl;
 
@@ -60,39 +60,106 @@ void writeDataToFile(const char *file) {
 
 // read commands from a file
 void readDataFromFile(const char *file) {
-
+    
 }
 
 // return factorial value
-int factorial(int);
+int factorial(int n)
+{
+  if (n == 0) // Base case
+    return 1;
+  else
+    return n * factorial(n - 1); // Recursive call
+}
+
 
 // return the Fibonacci number
-int fibonacci(int);
+int fibonacci(int index) {
+  if (index == 0) // Base case
+    return 0;
+  else if (index == 1) // Base case
+    return 1;
+  else // Reduction and recursive calls
+    return fibonacci(index - 1) + fibonacci(index - 2);
+
+}
 
 // return the square root
-double findSqrtValue(double);
+double findSqrtValue(double value) {
+    double result = sqrt(value);
+    return result;
+}
 
 // return natural log
-double naturalLog(double);
+double naturalLog(double value) {
+    double result = log(value);
+    return result;
+}
 
 // return area of the circle
-double areaCircle(double);
+double areaCircle(double radius) {
+    double pi = M_PI;
+    return pi * pow(radius,2);
+}
 
 // return area of the square
-double areaSquare(double);
+double areaSquare(double length) {
+    return length * length;
+}
 
 // return an odd number closet and higher to input number
-int findNextOddValue(int);
+int findNextOddValue(int number) {
+    if (number % 2 == 0 ){
+        return (number + 1);
+    }
+    else if (number % 2 == 1) {
+        return (number + 2);
+    }
+}
 
 // return an even number closet and higher to input number
-int findNextEvenValue(int);
+int findNextEvenValue(int number) {
+    if (number % 2 ==0) {
+        return (number + 2);
+    }
+    else if (number % 2 == 1) {
+        return (number + 1);
+    }
+}
 
 // special NyanCat function
-double findNyanCatValue(double);
+double findNyanCatValue(double myNum) {
+    return (pow((4 * myNum), myNum) + myNum + 10);
+}
 
 // sin, cosine or exponential function
-double doMath(double, char);
+double doMath(double number, char command) {
+    switch (command) {
+        case 'S':
+        case 's':
+            return sin(number);
+            break;
+        
+        case 'N':
+        case 'n':
+            return cos(number);
+            break;
+
+        case 'X':
+        case 'x':
+            return exp(number);
+            break;
+    }
+}
 
 // return random number using system time and the argument
-double lucky(double);
+double lucky(double number) {
+    // seed adding the argument and the system time, downcasting it to add
+    srand(number + static_cast<double>(NULL));
+
+    double result = rand();
+
+    return result;
+
+}
 
