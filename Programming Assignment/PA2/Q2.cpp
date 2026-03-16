@@ -8,10 +8,6 @@
 
 using namespace std;
 
-ofstream outFile;
-
-ifstream inFile;
-
 
 
 int *DoubleAndReverse (int *list, int size) {
