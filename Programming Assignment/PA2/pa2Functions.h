@@ -2,6 +2,8 @@
 
 #define PA2FUNCTIONS_H
 
+extern const int ENTRIES;
+
 // print program output header
 void initialize();
 

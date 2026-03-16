@@ -10,7 +10,7 @@ using namespace std;
 
 
 // global variable, maximum calculations setted for this program
-extern const int ENTRIES = 10;
+const int ENTRIES = 10;
 
 // helper function for single integer command codes
 int input_parameter_integer() {
@@ -55,14 +55,14 @@ double input_parameter_double() {
 
 
 
-main() {
+int main() {
     // initialize command code variable
-    char command;
+    char command = '\0';
 
 
     //
     while (command != 'Q' && command != 'q') {
-        cout << 'Please enter command code:' << endl;
+        cout << "Please enter command code:" << endl;
         cin >> command;
 
         if (checkCode(command)) {
@@ -123,9 +123,9 @@ main() {
                 }
 
                 else {
-                    for (int current_e = first_e ; current_e <= last_e;){
-                        current_e = findNextEvenValue(current_e);
+                    for (int current_e = findNextEvenValue(current_e) ; current_e <= last_e;){
                         cout << current_e << endl;
+                        current_e = findNextEvenValue(current_e);
                     } 
                 }
                 break;
@@ -196,9 +196,10 @@ main() {
                     cout << "No computation needed." << endl;
                 }
                 else {
-                    for (int current_d = first_d ; current_d <= last_d;){
-                        current_d = findNextOddValue(current_d);
+                    for (int current_d = findNextOddValue(current_d); current_d <= last_d;){
+                        
                         cout << current_d << endl;
+                        current_d = findNextOddValue(current_d);
                     } 
                 }
                 break;
@@ -226,7 +227,6 @@ main() {
             }
 
             default: {
-                cout << "Invalid command code" << endl;
                 break;
             }
             }

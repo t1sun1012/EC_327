@@ -5,8 +5,9 @@
 #include "pa2Functions.h"
 
 using namespace std;
-// global variable, maximum calculations setted for this program
-extern const int ENTRIES = 10;
+
+
+
 
 // print program output header
 void initialize() {
@@ -51,8 +52,9 @@ void writeDataToFile(const char *file) {
 
 
     if (!OutFile) {
-        cout << "cannot open output file" << endl;
+        cout << "cannot open output file:" << endl;
         writetofile = false;
+        return;
     }
 
     writetofile = true;
@@ -295,20 +297,20 @@ double areaSquare(double length) {
 // return an odd number closet and higher to input number
 int findNextOddValue(int number) {
     if (number % 2 == 0 ){
-        return (number + 1);
+        return number + 1;
     }
-    else if (number % 2 == 1) {
-        return (number + 2);
+    else {
+        return number + 2;
     }
 }
 
 // return an even number closet and higher to input number
 int findNextEvenValue(int number) {
     if (number % 2 ==0) {
-        return (number + 2);
+        return number + 2;
     }
-    else if (number % 2 == 1) {
-        return (number + 1);
+    else {
+        return number + 1;
     }
 }
 
@@ -335,6 +337,7 @@ double doMath(double number, char command) {
             return exp(number);
             break;
     }
+    return 0;
 }
 
 // return random number using system time and the argument
