@@ -12,6 +12,9 @@ using namespace std;
 // global variable, maximum calculations setted for this program
 const int ENTRIES = 10;
 
+extern ofstream OutFile;
+extern bool writetofile;
+
 // helper function for single integer command codes
 int input_parameter_integer() {
     cout << "Please enter command parameters:" << endl;
@@ -43,6 +46,9 @@ int main() {
                 // factorial
                 int number_f = input_parameter_integer();
                 cout << factorial(number_f) << endl;
+                if (writetofile) {
+                    OutFile << factorial(number_f) << endl;
+                }
                 break;
             }
 
@@ -51,6 +57,9 @@ int main() {
                 // Fibonacci
                 int number_b = input_parameter_integer();
                 cout << fibonacci(number_b) << endl;
+                if (writetofile) {
+                    OutFile << fibonacci(number_b) << endl;
+                }
                 break;
             }
 
@@ -80,6 +89,9 @@ int main() {
 
                 if (delta <= 0 || first > last) {
                     cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
                     break;
                 }
 
@@ -104,6 +116,9 @@ int main() {
                     else if (cmd == 'y') result = findNyanCatValue(number);
 
                     cout << result << endl;
+                    if (writetofile) {
+                        OutFile << result << endl;
+                    }
 
                     if (number >= last) break;
                     current += delta;
@@ -125,6 +140,9 @@ int main() {
 
                 if (first_e > last_e) {
                     cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
                 } else {
                     int current_e = first_e;
                     // if first is odd, use the function to get the next even
@@ -133,6 +151,9 @@ int main() {
                     }
                     while (current_e <= last_e) {
                         cout << current_e << endl;
+                        if (writetofile) {
+                            OutFile << current_e << endl;
+                        }
                         current_e = findNextEvenValue(current_e);
                     }
                 }
@@ -148,6 +169,9 @@ int main() {
 
                 if (first_d > last_d) {
                     cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
                 } else {
                     int current_d = first_d;
                     // if first is even, use the function to get the next odd
@@ -156,6 +180,9 @@ int main() {
                     }
                     while (current_d <= last_d) {
                         cout << current_d << endl;
+                        if (writetofile) {
+                            OutFile << current_d << endl;
+                        }
                         current_d = findNextOddValue(current_d);
                     }
                 }
@@ -190,6 +217,9 @@ int main() {
         }
         else {
             cout << "Invalid command code" << endl;
+            if (writetofile) {
+                    OutFile << "Invalid command code" << endl;
+            }
         }
         
     }
