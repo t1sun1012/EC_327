@@ -1,4 +1,4 @@
-
+#include "Statistics.h"
 
 // find median
 double getMedian(int arr[], int size) {

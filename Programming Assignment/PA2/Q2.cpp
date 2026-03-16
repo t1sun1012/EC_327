@@ -62,6 +62,6 @@ int main() {
     cout << "Median is: " << getMedian(new_arr, 2*size) << endl;
     cout << "Largest is: " << getLargest(new_arr, 2*size) << endl;
     
-    delete new_arr;
+    delete[] new_arr;
 
 }

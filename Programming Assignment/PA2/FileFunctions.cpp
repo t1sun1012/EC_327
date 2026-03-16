@@ -11,7 +11,7 @@ ifstream inFile;
 void WriteRandomData(int N, int M, const char *filename) {
 
     outFile.open(filename); 
-    srand(static_cast<double>(NULL));
+    srand(time(NULL));
 
     for (int count = 0 ; count != N ; count ++) {
         int random_num = rand() % (M+1);
