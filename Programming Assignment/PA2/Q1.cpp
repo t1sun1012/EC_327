@@ -65,7 +65,7 @@ main() {
 
 
     //
-    while (command != 'Q' || command != 'q') {
+    while (command != 'Q' && command != 'q') {
         cout << 'Please enter command code:' << endl;
         cin >> command;
 
@@ -74,22 +74,27 @@ main() {
             case 'F':
             case 'f':
                 // to do, factorial
+                break;
 
             case 'B':
             case 'b':
                 // to do, Fibonacci
-            
+                break;
+
             case 'R':
             case 'r':
                 // to do, square root
+                break;
 
             case 'U':
             case 'u':
                 // to do, area of Square
+                break;
 
             case 'C':
             case 'c':
                 // to do, area of Circle
+                break;
 
             case 'E':
             case 'e':
@@ -100,29 +105,40 @@ main() {
 
 
 
+
+                break;
+
+
+
             case 'K':
             case 'k':
                 // to do, Lucky number, generate random number
+                break;
 
             case 'S':
             case 's':
-                // to do, compute sin values 
+                // to do, compute sin values
+                break;
 
             case 'N':
             case 'n':
                 // to do, compute cosine values
+                break;
 
             case 'X':
             case 'x':
                 // to do, compute exponentials
+                break;
 
             case 'L':
             case 'l':
                 // to do, compute natural logs
+                break;
 
             case 'Y':
             case 'y':
                 // to do, compute NyanCat value
+                break;
 
             case 'D':
             case 'd':
@@ -133,13 +149,21 @@ main() {
 
 
 
+
+
+                break;
+
+
+
             case 'I':
             case 'i':
                 // to do, read from input file
+                break;
 
             case 'O':
             case 'o':
                 // to do, write to output file
+                break;
 
             default:
                 cout << "Invalid command code" << endl;

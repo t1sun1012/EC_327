@@ -33,18 +33,28 @@ bool checkCode(char command) {
 }
 
 
+
+ofstream OutFile; // control output file
+bool writetofile = false;
+
 // write the output of the program to a file, 
 void writeDataToFile(const char *file) {
-    ofstream OutFile; // control output file
-    bool writetofile = false;
+
+    if (OutFile.is_open()) {
+        OutFile.close();
+    }
+
 
     OutFile.open(file); // open the output file
+
+
     if (!OutFile) {
         cout << "cannot open output file" << endl;
         writetofile = false;
     }
+    
     writetofile = true;
-    cout << "Writing future output to file: " << file << endl;
+    cout << "Writing output to file: " << file << endl;
 
 }
 
