@@ -55,12 +55,13 @@ void writeDataToFile(const char *file) {
 
     writetofile = true;
     cout << "Writing output to file: " << file << endl;
+    OutFile << "Writing output to file" << file <, endl;
 
 }
 
 // read commands from a file
 void readDataFromFile(const char *file) {
-    
+
 }
 
 // return factorial value

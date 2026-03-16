@@ -53,7 +53,7 @@ double input_parameter_double() {
 char* input_parameter_file() {
     cout << "Please enter command parameters:" << endl;
 
-    char* file;
+    char file[100];
     cin >> file;
 
     return file;
