@@ -9,6 +9,7 @@ double getMedian(int arr[], int size) {
 
 
     // sort the array
+    // bubble sort
     for (int i = 0; i< size - 1; i++) {
         for (int j = 0; j< size -1 -i; j++){
             if (sort_arr[j] > sort_arr[j + 1]) {
@@ -45,6 +46,7 @@ int getLargest(int arr[], int size) {
 
 
     // sort the array
+    // bubble sort
     for (int i = 0; i< size - 1; i++) {
         for (int j = 0; j< size -1 -i; j++){
             if (sort_arr[j] > sort_arr[j + 1]) {

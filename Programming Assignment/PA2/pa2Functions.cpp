@@ -8,7 +8,6 @@ using namespace std;
 
 
 
-
 // print program output header
 void initialize() {
     cout << "EC327: Introduction to Software Engineering" << endl;
@@ -67,27 +66,38 @@ void writeDataToFile(const char *file) {
 void readDataFromFile(const char *file) {
     ifstream InFile(file);
 
+    // determine if input file is valid
     if (!InFile) {
         cout << "cannot open input file" << endl;
         return;
     }
 
+    // initialize command
     char command;
 
+    // reading the command and parameters from the input file
     while (InFile >> command) {
         if (!checkCode(command)) {
+        
             cout << "Invalid command code" << endl;
+
+            // write the output to the file
             if (writetofile) {
                 OutFile << "Invalid command code" << endl;
             }
+
             continue;
         }
 
+        // exit the program when command is Q or q
         if (command == 'Q' || command == 'q') {
             break;
         }
 
+
+        // case by case command
         switch (command) {
+            // factorial
             case 'F':
             case 'f': {
                 int n;
@@ -100,6 +110,8 @@ void readDataFromFile(const char *file) {
                 break;
             }
 
+
+            // fibonacci
             case 'B':
             case 'b': {
                 int n;
@@ -112,6 +124,8 @@ void readDataFromFile(const char *file) {
                 break;
             }
 
+
+            // cases where input parameters are first, last, delta
             case 'R':
             case 'r':
             case 'U':
@@ -130,9 +144,12 @@ void readDataFromFile(const char *file) {
             case 'l':
             case 'Y':
             case 'y': {
+                // assign parameters to variables from input file
                 double first, last, delta;
                 InFile >> first >> last >> delta;
+                
 
+                // special cases, invalid delta and first and last
                 if (delta <= 0 || first > last) {
                     cout << "No computation needed." << endl;
                     if (writetofile) {
@@ -141,42 +158,50 @@ void readDataFromFile(const char *file) {
                     break;
                 }
 
+                // initiailize count and compare it with ENTRIES
                 int count = 0;
                 double current = first;
 
+
+                
                 while (count < ENTRIES) {
-                    double x = current;
-                    if (x > last) {
-                        x = last;
+                    double number = current;
+                    // if adding delta larger than last, treat last as the input parameter
+                    if (number > last) {
+                        number = last;
                     }
 
                     double result = 0.0;
 
-                    if (command == 'R' || command == 'r') result = findSqrtValue(x);
-                    else if (command == 'U' || command == 'u') result = areaSquare(x);
-                    else if (command == 'C' || command == 'c') result = areaCircle(x);
-                    else if (command == 'K' || command == 'k') result = lucky(x);
+                    if (command == 'R' || command == 'r') result = findSqrtValue(number);
+                    else if (command == 'U' || command == 'u') result = areaSquare(number);
+                    else if (command == 'C' || command == 'c') result = areaCircle(number);
+                    else if (command == 'K' || command == 'k') result = lucky(number);
                     else if (command == 'S' || command == 's' ||
                              command == 'N' || command == 'n' ||
-                             command == 'X' || command == 'x') result = doMath(x, command);
-                    else if (command == 'L' || command == 'l') result = naturalLog(x);
-                    else if (command == 'Y' || command == 'y') result = findNyanCatValue(x);
+                             command == 'X' || command == 'x') result = doMath(number, command);
+                    else if (command == 'L' || command == 'l') result = naturalLog(number);
+                    else if (command == 'Y' || command == 'y') result = findNyanCatValue(number);
 
                     cout << result << endl;
                     if (writetofile) {
                         OutFile << result << endl;
                     }
 
-                    if (x == last) {
+                    if (number == last) {
                         break;
                     }
 
+
+                    // current number adding delta and increment count
                     current += delta;
                     count++;
                 }
                 break;
             }
 
+
+            // find even number in the range of first and last
             case 'E':
             case 'e': {
                 int first, last;
@@ -203,6 +228,8 @@ void readDataFromFile(const char *file) {
                 break;
             }
 
+
+            // find odd number in the range of first and last
             case 'D':
             case 'd': {
                 int first, last;
@@ -215,6 +242,7 @@ void readDataFromFile(const char *file) {
                     }
                 } else {
                     int current = first;
+                    
                     if (current % 2 == 0) {
                         current++;
                     }

@@ -41,6 +41,8 @@ int main() {
 
         if (checkCode(command)) {
             switch (command) {
+
+            // cases where input is only integer
             case 'F':
             case 'f':{
                 // factorial
@@ -52,6 +54,7 @@ int main() {
                 break;
             }
 
+            // cases where input is only integer
             case 'B':
             case 'b':{
                 // Fibonacci
@@ -83,26 +86,34 @@ int main() {
             case 'l':
             case 'Y':
             case 'y': {
+                // prompt for input first, last and delta
                 cout << "Please enter command parameters:" << endl;
                 double first, last, delta;
                 cin >> first >> last >> delta;
-
+                
+                // check special cases of first, last and delta were delta <=0 or first is larger than last
                 if (delta <= 0 || first > last) {
                     cout << "No computation needed." << endl;
+
+                    // if writetofile is enabled, output to file
                     if (writetofile) {
                         OutFile << "No computation needed." << endl;
                     }
                     break;
                 }
 
+                // initialize count and compare with ENTRIES 
                 int count = 0;
                 double current = first;
                 while (count < ENTRIES) {
                     double number = current;
+                    // if adding delta larger than last, treat last as the input parameter
                     if (number > last) {
                         number = last;
                     }
                     double result = 0.0;
+
+
                     char cmd = tolower(static_cast<unsigned char>(command));
 
                     if (cmd == 'r') result = findSqrtValue(number);
@@ -114,13 +125,22 @@ int main() {
                     else if (cmd == 'x') result = doMath(number, 'x');
                     else if (cmd == 'l') result = naturalLog(number);
                     else if (cmd == 'y') result = findNyanCatValue(number);
+                    
 
+                    // display result to the console
                     cout << result << endl;
+
+
                     if (writetofile) {
                         OutFile << result << endl;
                     }
 
-                    if (number >= last) break;
+                    
+                    if (number >= last) {
+                        break;
+                    }
+
+                    // current number adding delta and increment count
                     current += delta;
                     count++;
                 }
@@ -131,7 +151,7 @@ int main() {
 
             
 
-      
+            // find even number in the range of first and last
             case 'E':
             case 'e': {
                 cout << "Please enter command parameters:" << endl;
@@ -162,7 +182,7 @@ int main() {
 
             
 
-            // fuind odd number in the range of first and last
+            // find odd number in the range of first and last
             case 'D':
             case 'd': {
                 cout << "Please enter command parameters:" << endl;
