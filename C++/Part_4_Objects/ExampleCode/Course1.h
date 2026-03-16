@@ -1,0 +1,25 @@
+#ifndef COURSE_H
+#define COURSE_H
+
+#include <string>
+using namespace std;
+
+class Course
+{
+public:
+  Course(const string &courseName);
+  Course(Course &);
+  string getCourseName();
+  void addStudent(const string &student);
+  string * getStudents();
+  int getNumberOfStudents();
+
+private:
+  string courseName;
+  string *students;
+  int numberOfStudents;
+};
+
+#endif
+
+
