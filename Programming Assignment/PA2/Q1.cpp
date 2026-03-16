@@ -23,44 +23,15 @@ int input_parameter_integer() {
 }
 
 
-// helper function for double command codes
-double input_parameter_double() {
-    cout << "Please enter command parameters:" << endl;
-
-    double first; double last; double delta;
-    cin >> first >> last >> delta;
-
-
-    // determine special cases
-    if (delta <= 0 || first > last) {
-        cout << "No computation needed." << endl;
-        return 0;
-    }
-    else {
-        // determine computation counts and first, last in range
-        for (int count = 0; first <= last && count != ENTRIES; count++) {
-            first += delta;
-        }
-        if (first > last) {
-            return last;
-        }
-        else {
-            return first;
-        }
-    }
-}
-
-
-
-
-
 
 int main() {
+
+    initialize(); // initialize
+
     // initialize command code variable
     char command = '\0';
 
 
-    //
     while (command != 'Q' && command != 'q') {
         cout << "Please enter command code:" << endl;
         cin >> command;
@@ -83,124 +54,110 @@ int main() {
                 break;
             }
 
+
+            //cases for doubles that need first, last and delta
             case 'R':
-            case 'r': {
-                // square root
-                double number_r = input_parameter_double();
-                cout << findSqrtValue(number_r) << endl;
-                break;
-            }
-
+            case 'r':
             case 'U':
-            case 'u': {
-
-    
-                // area of Square
-                double number_u = input_parameter_double();
-                cout << areaSquare(number_u) << endl;
-                break;
-            }
-
+            case 'u':
             case 'C':
-            case 'c': {
-
-                // area of Circle
-                double number_c = input_parameter_double();
-                cout << areaCircle(number_c) << endl;
-                break;
-            }
-
-            case 'E':
-            case 'e': {
-                // list even numbers in the range of first and last
-                cout << "Please enter command parameters:" << endl;
-                double first_e; double last_e;
-                cin >> first_e >> last_e;
-
-                // check if first is smaller than last 
-                if (first_e > last_e) {
-                    cout << "No computation needed." << endl;
-                }
-
-                else {
-                    for (int current_e = findNextEvenValue(current_e) ; current_e <= last_e;){
-                        cout << current_e << endl;
-                        current_e = findNextEvenValue(current_e);
-                    } 
-                }
-                break;
-            }
-
-
+            case 'c':
             case 'K':
-            case 'k': {
-            
-                // generate random number
-                double number_k = input_parameter_double();
-                cout << lucky(number_k) << endl;
-                break;
-            }
-
+            case 'k':
             case 'S':
-            case 's': {
-
-                // compute sin values
-                double number_s = input_parameter_double();
-                cout << doMath(number_s,'s') << endl;
-                break;
-            }
-
+            case 's':
             case 'N':
-            case 'n': {
-                // compute cosine values
-                double number_n = input_parameter_double();
-                cout << doMath(number_n, 'n') << endl;
-                break;
-            }
-
+            case 'n':
             case 'X':
-            case 'x': {
-                // compute exponentials
-                double number_x = input_parameter_double();
-                cout << doMath(number_x, 'x') << endl;
-                break;
-            }
-
+            case 'x':
             case 'L':
-            case 'l': {
-                // compute natural logs
-                double number_l = input_parameter_double();
-                cout << naturalLog(number_l) <<endl;
-                break;
-            }
-
-
+            case 'l':
             case 'Y':
             case 'y': {
-                // compute NyanCat value
-                double number_y = input_parameter_double();
-                cout << findNyanCatValue(number_y) << endl;
+                cout << "Please enter command parameters:" << endl;
+                double first, last, delta;
+                cin >> first >> last >> delta;
+
+                if (delta <= 0 || first > last) {
+                    cout << "No computation needed." << endl;
+                    break;
+                }
+
+                int count = 0;
+                double current = first;
+                while (count < ENTRIES) {
+                    double number = current;
+                    if (number > last) {
+                        number = last;
+                    }
+                    double result = 0.0;
+                    char cmd = tolower(static_cast<unsigned char>(command));
+
+                    if (cmd == 'r') result = findSqrtValue(number);
+                    else if (cmd == 'u') result = areaSquare(number);
+                    else if (cmd == 'c') result = areaCircle(number);
+                    else if (cmd == 'k') result = lucky(number);
+                    else if (cmd == 's') result = doMath(number, 's');
+                    else if (cmd == 'n') result = doMath(number, 'n');
+                    else if (cmd == 'x') result = doMath(number, 'x');
+                    else if (cmd == 'l') result = naturalLog(number);
+                    else if (cmd == 'y') result = findNyanCatValue(number);
+
+                    cout << result << endl;
+
+                    if (number >= last) break;
+                    current += delta;
+                    count++;
+                }
                 break;
             }
+
+           
+
+            
+
+      
+            case 'E':
+            case 'e': {
+                cout << "Please enter command parameters:" << endl;
+                int first_e, last_e;
+                cin >> first_e >> last_e;
+
+                if (first_e > last_e) {
+                    cout << "No computation needed." << endl;
+                } else {
+                    int current_e = first_e;
+                    // if first is odd, use the function to get the next even
+                    if (current_e % 2 != 0) {
+                        current_e = findNextEvenValue(current_e - 1);
+                    }
+                    while (current_e <= last_e) {
+                        cout << current_e << endl;
+                        current_e = findNextEvenValue(current_e);
+                    }
+                }
+                break;
+            }
+
 
             case 'D':
             case 'd': {
-            
-                // list Odd numbers in the range of first and last
                 cout << "Please enter command parameters:" << endl;
-                double first_d; double last_d;
+                int first_d, last_d;
                 cin >> first_d >> last_d;
 
-                // check if first is smaller than last
                 if (first_d > last_d) {
                     cout << "No computation needed." << endl;
-                }
-                else {
-                    for (int current_d = findNextOddValue(current_d); current_d <= last_d;){
-                        
+                } else {
+                    int current_d = first_d;
+                    // if first is even, use the function to get the next odd
+                    if (current_d % 2 == 0) {
+                        current_d = findNextOddValue(current_d - 1);
+                    }
+                    while (current_d <= last_d) {
                         cout << current_d << endl;
                         current_d = findNextOddValue(current_d);
-                    } 
+                    }
                 }
                 break;
             }

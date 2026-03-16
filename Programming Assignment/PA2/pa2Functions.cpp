@@ -285,7 +285,7 @@ double naturalLog(double value) {
 
 // return area of the circle
 double areaCircle(double radius) {
-    double pi = M_PI;
+    double pi = 3.14;
     return pi * pow(radius,2);
 }
 
