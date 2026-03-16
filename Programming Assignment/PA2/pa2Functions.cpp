@@ -61,7 +61,189 @@ void writeDataToFile(const char *file) {
 
 // read commands from a file
 void readDataFromFile(const char *file) {
+    ifstream InFile(file);
 
+    if (!InFile) {
+        cout << "cannot open input file" << endl;
+        return;
+    }
+
+    char command;
+
+    while (InFile >> command) {
+        if (!checkCode(command)) {
+            cout << "Invalid command code" << endl;
+            if (writetofile) {
+                OutFile << "Invalid command code" << endl;
+            }
+            continue;
+        }
+
+        if (command == 'Q' || command == 'q') {
+            break;
+        }
+
+        switch (command) {
+            case 'F':
+            case 'f': {
+                int n;
+                InFile >> n;
+                int result = factorial(n);
+                cout << result << endl;
+                if (writetofile) {
+                    OutFile << result << endl;
+                }
+                break;
+            }
+
+            case 'B':
+            case 'b': {
+                int n;
+                InFile >> n;
+                int result = fibonacci(n);
+                cout << result << endl;
+                if (writetofile) {
+                    OutFile << result << endl;
+                }
+                break;
+            }
+
+            case 'R':
+            case 'r':
+            case 'U':
+            case 'u':
+            case 'C':
+            case 'c':
+            case 'K':
+            case 'k':
+            case 'S':
+            case 's':
+            case 'N':
+            case 'n':
+            case 'X':
+            case 'x':
+            case 'L':
+            case 'l':
+            case 'Y':
+            case 'y': {
+                double first, last, delta;
+                InFile >> first >> last >> delta;
+
+                if (delta <= 0 || first > last) {
+                    cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
+                    break;
+                }
+
+                int count = 0;
+                double current = first;
+
+                while (count < ENTRIES) {
+                    double x = current;
+                    if (x > last) {
+                        x = last;
+                    }
+
+                    double result = 0.0;
+
+                    if (command == 'R' || command == 'r') result = findSqrtValue(x);
+                    else if (command == 'U' || command == 'u') result = areaSquare(x);
+                    else if (command == 'C' || command == 'c') result = areaCircle(x);
+                    else if (command == 'K' || command == 'k') result = lucky(x);
+                    else if (command == 'S' || command == 's' ||
+                             command == 'N' || command == 'n' ||
+                             command == 'X' || command == 'x') result = doMath(x, command);
+                    else if (command == 'L' || command == 'l') result = naturalLog(x);
+                    else if (command == 'Y' || command == 'y') result = findNyanCatValue(x);
+
+                    cout << result << endl;
+                    if (writetofile) {
+                        OutFile << result << endl;
+                    }
+
+                    if (x == last) {
+                        break;
+                    }
+
+                    current += delta;
+                    count++;
+                }
+                break;
+            }
+
+            case 'E':
+            case 'e': {
+                int first, last;
+                InFile >> first >> last;
+
+                if (first > last) {
+                    cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
+                } else {
+                    int current = first;
+                    if (current % 2 != 0) {
+                        current++;
+                    }
+                    while (current <= last) {
+                        cout << current << endl;
+                        if (writetofile) {
+                            OutFile << current << endl;
+                        }
+                        current += 2;
+                    }
+                }
+                break;
+            }
+
+            case 'D':
+            case 'd': {
+                int first, last;
+                InFile >> first >> last;
+
+                if (first > last) {
+                    cout << "No computation needed." << endl;
+                    if (writetofile) {
+                        OutFile << "No computation needed." << endl;
+                    }
+                } else {
+                    int current = first;
+                    if (current % 2 == 0) {
+                        current++;
+                    }
+                    while (current <= last) {
+                        cout << current << endl;
+                        if (writetofile) {
+                            OutFile << current << endl;
+                        }
+                        current += 2;
+                    }
+                }
+                break;
+            }
+
+            case 'O':
+            case 'o': {
+                char file[100];
+                InFile >> file;
+                writeDataToFile(file);
+                break;
+            }
+
+            case 'I':
+            case 'i': {
+                char file[100];
+                InFile >> file;
+                readDataFromFile(file);
+                break;
+            }
+        }
+    }
+
+    InFile.close();
 }
 
 // return factorial value

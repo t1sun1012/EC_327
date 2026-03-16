@@ -49,15 +49,7 @@ double input_parameter_double() {
     }
 }
 
-// helper function for reading files
-char* input_parameter_file() {
-    cout << "Please enter command parameters:" << endl;
 
-    char file[100];
-    cin >> file;
-
-    return file;
-}
 
 
 
@@ -195,13 +187,20 @@ main() {
 
             case 'I':
             case 'i':
-                // to do, read from input file
+                // read from input file
+                char file[100];
+                cout << "Please enter command parameters:" << endl;
+                cin >> file;
+                readDataFromFile(file);
                 break;
+
 
             case 'O':
             case 'o':
                 // write to output file
-                char* file = input_parameter_file();
+                char file[100];
+                cout << "Please enter command parameters:" << endl;
+                cin >> file;
                 writeDataToFile(file);
                 break;
 
