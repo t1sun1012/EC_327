@@ -28,15 +28,17 @@ int *DoubleAndReverse (int *list, int size) {
 
 int main() {
 
-    // create data file
-    cout << "Writing file: data.txt" << endl;
-    WriteRandomData(5, 10, "random_data.txt");
+    
 
     // read file into an array
     int myArray[1000];
     int size = 0;
     cout << "Reading file: data.txt" << endl;
     ReadData("data.txt", size, myArray);
+
+    // create data file
+    cout << "Writing file: data.txt" << endl;
+    WriteRandomData(5, 10, "data.txt");
 
     // print the size
     cout << "Array size is: " << size << endl;
