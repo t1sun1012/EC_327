@@ -34,6 +34,7 @@ double input_parameter_double() {
     // determine special cases
     if (delta <= 0 || first > last) {
         cout << "No computation needed." << endl;
+        return 0;
     }
     else {
         // determine computation counts and first, last in range
@@ -67,147 +68,167 @@ main() {
         if (checkCode(command)) {
             switch (command) {
             case 'F':
-            case 'f':
+            case 'f':{
                 // factorial
-                int number = input_parameter_integer();
-                cout << factorial(number) << endl;
+                int number_f = input_parameter_integer();
+                cout << factorial(number_f) << endl;
                 break;
+            }
 
             case 'B':
-            case 'b':
+            case 'b':{
                 // Fibonacci
-                int number = input_parameter_integer();
-                cout << fibonacci(number) << endl;
+                int number_b = input_parameter_integer();
+                cout << fibonacci(number_b) << endl;
                 break;
+            }
 
             case 'R':
-            case 'r':
+            case 'r': {
                 // square root
-                double number = input_parameter_double();
-                cout << findSqrtValue(number) << endl;
+                double number_r = input_parameter_double();
+                cout << findSqrtValue(number_r) << endl;
                 break;
+            }
 
             case 'U':
-            case 'u':
+            case 'u': {
+
+    
                 // area of Square
-                double number = input_parameter_double();
-                cout << areaSquare(number) << endl;
+                double number_u = input_parameter_double();
+                cout << areaSquare(number_u) << endl;
                 break;
+            }
 
             case 'C':
-            case 'c':
+            case 'c': {
+
                 // area of Circle
-                double number = input_parameter_double();
-                cout << areaCircle(number) << endl;
+                double number_c = input_parameter_double();
+                cout << areaCircle(number_c) << endl;
                 break;
+            }
 
             case 'E':
-            case 'e':
+            case 'e': {
                 // list even numbers in the range of first and last
                 cout << "Please enter command parameters:" << endl;
-                double first; double last;
-                cin >> first >> last;
+                double first_e; double last_e;
+                cin >> first_e >> last_e;
 
                 // check if first is smaller than last 
-                if (first > last) {
+                if (first_e > last_e) {
                     cout << "No computation needed." << endl;
                 }
 
                 else {
-                    for (int current = first ; current <= last;){
-                        current = findNextEvenValue(current);
-                        cout << current << endl;
+                    for (int current_e = first_e ; current_e <= last_e;){
+                        current_e = findNextEvenValue(current_e);
+                        cout << current_e << endl;
                     } 
                 }
                 break;
-
+            }
 
 
             case 'K':
-            case 'k':
+            case 'k': {
+            
                 // generate random number
-                double number = input_parameter_double();
-                cout << lucky(number) << endl;
+                double number_k = input_parameter_double();
+                cout << lucky(number_k) << endl;
                 break;
+            }
 
             case 'S':
-            case 's':
+            case 's': {
+
                 // compute sin values
-                double number = input_parameter_double();
-                cout << doMath(number,'s') << endl;
+                double number_s = input_parameter_double();
+                cout << doMath(number_s,'s') << endl;
                 break;
+            }
 
             case 'N':
-            case 'n':
+            case 'n': {
                 // compute cosine values
-                double number = input_parameter_double();
-                cout << doMath(number, 'n') << endl;
+                double number_n = input_parameter_double();
+                cout << doMath(number_n, 'n') << endl;
                 break;
+            }
 
             case 'X':
-            case 'x':
+            case 'x': {
                 // compute exponentials
-                double number = input_parameter_double();
-                cout << doMath(number, 'x') << endl;
+                double number_x = input_parameter_double();
+                cout << doMath(number_x, 'x') << endl;
                 break;
+            }
 
             case 'L':
-            case 'l':
+            case 'l': {
                 // compute natural logs
-                double number = input_parameter_double();
-                cout << naturalLog(number) <<endl;
+                double number_l = input_parameter_double();
+                cout << naturalLog(number_l) <<endl;
                 break;
+            }
+
 
             case 'Y':
-            case 'y':
+            case 'y': {
                 // compute NyanCat value
-                double number = input_parameter_double();
-                cout << findNyanCatValue(number) << endl;
+                double number_y = input_parameter_double();
+                cout << findNyanCatValue(number_y) << endl;
                 break;
+            }
 
             case 'D':
-            case 'd':
+            case 'd': {
+            
                 // list Odd numbers in the range of first and last
                 cout << "Please enter command parameters:" << endl;
-                double first; double last;
-                cin >> first >> last;
+                double first_d; double last_d;
+                cin >> first_d >> last_d;
 
                 // check if first is smaller than last
-                if (first > last) {
+                if (first_d > last_d) {
                     cout << "No computation needed." << endl;
                 }
                 else {
-                    for (int current = first ; current <= last;){
-                        current = findNextOddValue(current);
-                        cout << current << endl;
+                    for (int current_d = first_d ; current_d <= last_d;){
+                        current_d = findNextOddValue(current_d);
+                        cout << current_d << endl;
                     } 
                 }
                 break;
-
+            }
 
             case 'I':
-            case 'i':
+            case 'i': {
                 // read from input file
-                char file[100];
+                char infile[100];
                 cout << "Please enter command parameters:" << endl;
-                cin >> file;
-                readDataFromFile(file);
+                cin >> infile;
+                readDataFromFile(infile);
                 break;
-
+            }
 
             case 'O':
-            case 'o':
-                // write to output file
-                char file[100];
-                cout << "Please enter command parameters:" << endl;
-                cin >> file;
-                writeDataToFile(file);
-                break;
+            case 'o': {
 
-            default:
+                // write to output file
+                char outfile[100];
+                cout << "Please enter command parameters:" << endl;
+                cin >> outfile;
+                writeDataToFile(outfile);
+                break;
+            }
+
+            default: {
                 cout << "Invalid command code" << endl;
                 break;
-
+            }
             }
         }
         else {

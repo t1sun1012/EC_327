@@ -2,9 +2,11 @@
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include "pa2Functions.h"
 
 using namespace std;
-
+// global variable, maximum calculations setted for this program
+extern const int ENTRIES = 10;
 
 // print program output header
 void initialize() {
@@ -55,7 +57,7 @@ void writeDataToFile(const char *file) {
 
     writetofile = true;
     cout << "Writing output to file: " << file << endl;
-    OutFile << "Writing output to file" << file <, endl;
+    OutFile << "Writing output to file" << file << endl;
 
 }
 
