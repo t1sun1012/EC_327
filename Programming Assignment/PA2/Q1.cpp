@@ -160,7 +160,9 @@ int main() {
                 break;
             }
 
+            
 
+            // fuind odd number in the range of first and last
             case 'D':
             case 'd': {
                 cout << "Please enter command parameters:" << endl;
