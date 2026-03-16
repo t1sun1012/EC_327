@@ -9,12 +9,16 @@ ifstream inFile;
 
 // generate random data to a file
 void WriteRandomData(int N, int M, const char *filename) {
-    outFile.open(filename);
+
+    outFile.open(filename); 
+    srand(static_cast<double>(NULL));
+
     for (int count = 0 ; count != N ; count ++) {
-        srand(static_cast<double>(NULL));
         int random_num = rand() % (M+1);
         outFile << random_num << endl;
     }
+
+    outFile.close();
 }
 
 
@@ -23,11 +27,13 @@ void WriteRandomData(int N, int M, const char *filename) {
 void ReadData(const char *filename, int &size, int myArray[]) {
     inFile.open(filename);
 
-    int position = 0;
+    size = 0; // initialize size to be 0
 
     int value; 
     while(inFile >> value) {
-        myArray[position] = value; // store the value
-        position++;                 // increment count
+        myArray[size] = value; // store the value
+        size++;                 // increment count
     }
+
+    inFile.close();
 }
