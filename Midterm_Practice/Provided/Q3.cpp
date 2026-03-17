@@ -79,7 +79,7 @@ This is a void function.
 void pointerSwap(int* ptr)
 {
 	int *new_ptr = new int[0];
-	new_ptr[0] = 50;
+	new_ptr[0] = 33;
 	ptr = new_ptr;
 
 

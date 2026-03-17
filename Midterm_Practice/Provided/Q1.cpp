@@ -39,7 +39,7 @@ int main()
 	cout << "Enter if your your want mph (0) or minutes per mile (1) " ;
 	cin >> metrics;
 	
-	bool newBest = runAMarathon (&bestTime, badWeather, trained);
+	bool newBest = runAMarathon (bestTime, badWeather, trained);
 	if (newBest)
 		cout << "Your new best time is " << bestTime << endl;
 	else

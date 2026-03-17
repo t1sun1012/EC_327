@@ -12,10 +12,10 @@ using namespace std;
 int futureScore(const double ave, const int sum)
 {
 	int score;
-	score = ave + (1/3 * sum);//fix
+	score = static_cast<int>(ave + sum / 3.0);//fix
 
   // todo ensure 0 and 9
-	return score;
+	return score % 10;
 }
 
 
@@ -41,8 +41,9 @@ string futureDecode(int score)
     case 9:  return future = "Emperor of the World";	break;
     //?? - add the correct syntax here for the default behavior
     default:
-      cout << "Error" << endl;break;
-	  return future;
+      cout << "Error" << endl;
+	    return "";
+      break;
   }
   cout << "No switch!" << endl;
   return future = "Error";

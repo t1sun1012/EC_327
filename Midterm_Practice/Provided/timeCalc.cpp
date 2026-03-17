@@ -17,18 +17,18 @@ Minutes Per Mile = time in minutes divided by MARATHON distance
 extern const double MARATHON;
 
 //Put calcSplit function here as described in timeCalc.h
-double calcSplit(double bestTime, bool metrics, char units)
+double calcSplit(double bestTime, int metrics, char units)
 {
 	//mph
-	if (metrics == false)
+	if (metrics == 0)
 	{
 		cout << "MPH: ";
-		if(units == 'm')
+		if(units == 'h')
 		{
 			return (MARATHON/bestTime);
 		}
 		
-		if (units == 'h')
+		if (units == 'm')
 		{
 			return (MARATHON/(bestTime/60.0));
 		}
@@ -36,7 +36,7 @@ double calcSplit(double bestTime, bool metrics, char units)
 	}	
 	
 	//minutes per mile
-	if (metrics == true)
+	if (metrics == 1)
 	{
 		cout << "Minutes Per Mile: ";
 		if(units == 'h')
