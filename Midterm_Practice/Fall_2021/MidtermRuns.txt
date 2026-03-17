@@ -1,0 +1,168 @@
+Q1
+
+EC327 Election Simulator 2021
+Are you going to vote? Y or N: N
+You have choosen not to vote. Thanks!
+
+************************************************************************
+
+EC327 Election Simulator 2021
+Are you going to vote? Y or N: Y
+What state do you live in? Input two capital letters: CA
+You said: CA
+You are not from MA. This simulator won't work for you!
+
+
+************************************************************************
+
+EC327 Election Simulator 2021
+Are you going to vote? Y or N: Y
+What state do you live in? Input two capital letters: MA
+You said: MA
+You are from this state. Great you can vote here!
+President: Kanye (1), The Rock (2), Other (3): 1
+Supreme Leader: Densmore (1), Kodos (2), Kang (3): 1
+Your votes are: 1 1
+The election result is 88
+
+************************************************************************
+
+EC327 Election Simulator 2021
+Are you going to vote? Y or N: Y
+What state do you live in? Input two capital letters: MA
+You said: MA
+You are from this state. Great you can vote here!
+President: Kanye (1), The Rock (2), Other (3): 2
+Supreme Leader: Densmore (1), Kodos (2), Kang (3): 3
+Your votes are: 2 3
+The election result is 100
+
+************************************************************************
+
+EC327 Election Simulator 2021
+Are you going to vote? Y or N: Y
+What state do you live in? Input two capital letters: MA
+You said: MA
+You are from this state. Great you can vote here!
+President: Kanye (1), The Rock (2), Other (3): 3
+Supreme Leader: Densmore (1), Kodos (2), Kang (3): 1
+Your votes are: 3 1
+The election result is 108
+
+************************************************************************
+
+Q2
+
+
+Breakfast Simulator 2021 Rev 1.0
+How many people are eating breakfast today? (enter an integer): 0
+You have created a valid order
+Calculating sum for Orders.txt...
+Your order total is $0
+Enter how much money you are going to give: 0
+Thanks! The bill was $0 and you gave $0 so your change is $0
+Come again!
+
+************************************************************************
+
+Breakfast Simulator 2021 Rev 1.0
+How many people are eating breakfast today? (enter an integer): 1
+Order #0 is?: 1
+Validating Pancakes...
+You have created a valid order
+Calculating sum for Orders.txt...
+Pancakes is processing....
+Your order total is $5.99
+Enter how much money you are going to give: 7
+Thanks! The bill was $5.99 and you gave $7 so your change is $1.01
+Come again!
+
+************************************************************************
+
+Breakfast Simulator 2021 Rev 1.0
+How many people are eating breakfast today? (enter an integer): 4
+Order #0 is?: 1
+Order #1 is?: 2
+Order #2 is?: 3
+Order #3 is?: 4
+Validating Pancakes...
+Validating FrenchToast...
+Validating Waffles...
+Validating FruitPlate...
+You have created a valid order
+Calculating sum for Orders.txt...
+Pancakes is processing....
+FrenchToast is processing....
+Waffles is processing....
+FruitPlate is processing....
+Your order total is $22.94
+Enter how much money you are going to give: 20
+Cheapskate! Try again....
+Enter how much money you are going to give: 25
+Thanks! The bill was $22.94 and you gave $25 so your change is $2.06
+Come again!
+
+************************************************************************
+
+
+Breakfast Simulator 2021 Rev 1.0
+How many people are eating breakfast today? (enter an integer): 3
+Order #0 is?: 3
+Order #1 is?: 3
+Order #2 is?: 3
+Validating Waffles...
+Validating Waffles...
+Validating Waffles...
+You have created a valid order
+Calculating sum for Orders.txt...
+Waffles is processing....
+Waffles is processing....
+Waffles is processing....
+Your order total is $20.97
+Enter how much money you are going to give: 50
+Thanks! The bill was $20.97 and you gave $50 so your change is $29.03
+Come again!
+
+************************************************************************
+
+Breakfast Simulator 2021 Rev 1.0
+How many people are eating breakfast today? (enter an integer): 4
+Order #0 is?: 7
+Order #1 is?: 7
+Order #2 is?: 7
+Order #3 is?: 7
+Error processing breakfast. There is no 7
+Error processing breakfast. There is no 7
+Error processing breakfast. There is no 7
+Error processing breakfast. There is no 7
+You have created a valid order
+Calculating sum for Orders.txt...
+Your order total is $0
+Enter how much money you are going to give: 0
+Thanks! The bill was $0 and you gave $0 so your change is $0
+Come again!
+
+************************************************************************
+
+Q3
+
+Picture 1
+z F
+z F
+A A
+0x600000430 (value does not matter)
+0x6000128b0 (value does not matter)
+63
+63
+63
+56
+56
+56
+2 3 4 5 1
+
+
+
+
+
+
+
