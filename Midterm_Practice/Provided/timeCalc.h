@@ -16,7 +16,7 @@ Minutes Per Mile = time in minutes divided by MARATHON distance
  
  using namespace std;
 //use const when appropriate 
-?? calcSplit(??);
+double calcSplit(double bestTime, bool metrics, char units);
  
 
  

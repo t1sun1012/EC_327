@@ -15,5 +15,5 @@
  */
 
  //use const when appropriate 
-?? runAMarathon(??);
+bool runAMarathon (double* bestTime, bool badWeather, bool trained);
 

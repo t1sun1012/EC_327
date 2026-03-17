@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#include "racealc.h"
+#include "raceCalc.h"
 #include "timeCalc.h"
 
 /*
@@ -16,36 +16,36 @@ You DO NOT need to add other functionality
 
 extern const double MARATHON = 26.22;
 
-?? main()
+int main()
 {
 	
-	doble bestTime;
+	double bestTime;
 	bool badWeather;
 	bool trained;
 	char units;
-	int metrics
+	int metrics;
 	
 	cout << "Time to go running!" << endl;
 	cout << "Enter your best time ";
-	cn >> bestTime;
-	double originalBest = bestime
+	cin >> bestTime;
+	double originalBest = bestTime;
 	
-	cout << Enter if you trained (1 or 0) ";
-	cin >> trined;
+	cout << "Enter if you trained (1 or 0) ";
+	cin >> trained;
 	cout << "Enter if bad weather (1 or 0) ";
 	cin >> badWeather;
 	cout << "Enter if your time is in (h)ours or (m)inutes " ;
-	cin > units;
+	cin >> units;
 	cout << "Enter if your your want mph (0) or minutes per mile (1) " ;
 	cin >> metrics;
 	
-	bool newBest = runAMarathon (bestTime, badWeather, trained);
-	iff (newBest)
+	bool newBest = runAMarathon (&bestTime, badWeather, trained);
+	if (newBest)
 		cout << "Your new best time is " << bestTime << endl;
-	els
-		cut << "No new best time" << endl;
+	else
+		cout << "No new best time" << endl;
 	
-	double split = clcSplit(bestTime, metrics, units);
+	double split = calcSplit(bestTime, metrics, units);
 	cout << split  << endl;
 	
 	
@@ -55,11 +55,11 @@ extern const double MARATHON = 26.22;
 	cout << "Your new best time is " << bestTime << endl;
 	if(trained)
 		cout << "You trained" << endl;
-	if (badeather)
+	if (badWeather)
 		cout << "There was bad weather";
 	cout << "Your time calc was " << split;
 	
-	retrn 0;
+	return 0;
 }	
 
 

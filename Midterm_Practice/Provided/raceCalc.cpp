@@ -16,30 +16,27 @@
  
  
 //Put runAMarathon function here as described in raceCalc.h 
-?? runAMarathon (??)
+bool runAMarathon (double* bestTime, bool badWeather, bool trained)
  {
 	 
-	 if (??)
+	 if (!badWeather && trained)
 	 {
-		bestTime -= ??;
+		*bestTime -= 20.0;
 		return true;
 	 }
 		 
-	 else if (??)
+	 else if (!trained)
 	 {
 		 return false;
 	 }
 		 
-	 else if (??)
+	 else if (badWeather && trained )
 	 {
-		 bestTime -= ??;
+		 *bestTime -= 10.0;
 		 return true;
 	 }
-		 
-	else
-		return ??;
-	 	 
-	 return false;	 
+	 else
+		return false; 
  }
  
  

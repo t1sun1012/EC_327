@@ -6,8 +6,14 @@ using namespace std;
 void ptrsAreFun()
 {
 	//Put your code for picture 1 here	
+	int i = 10;
+	int j = 20;
+	int *ptrI = &i;
+	int *ptrJ = &j;
 
-	
+	int* ptrArray[2];
+	ptrArray[0] = ptrJ;
+	ptrArray[1] = ptrI;
 	
 	//Last 3 lines of this section DON'T CHANGE
 	cout << ptrArray[0] << " " << ptrArray[1] << endl;
@@ -17,7 +23,11 @@ void ptrsAreFun()
 	
 	
 	//Put your code for picture 2 here
+	double *values = new double[40];
+	values[38] = 3.65;
+	double *ptrD = &values[38];
 
+	delete values;
 		
 	//Last 4 lines of this section DON'T CHANGE
 	cout << values[38] << " " << *ptrD << endl;		
@@ -26,8 +36,22 @@ void ptrsAreFun()
 	cout << values[38] << " " << *ptrD << endl;
 	//***********************************************************
 	
-	
+
+
 	//Put your code for picture 3 here
+	short *ptr1;
+	short *ptr2;
+	short **ptrList[100]; 
+	ptrList[57] = &ptr1;
+	ptrList[79] = &ptr2;
+	short *a_value = new short[0];
+	a_value[0] = 50;
+	ptr1 = a_value;
+	ptr2 = a_value;
+
+	delete *ptrList[79];
+
+
 
 	
 	
@@ -52,10 +76,18 @@ Then assign the pointer argument to point at the new heap value just created
 The pointer argument originally passed should be changed as a result when the function returns (aka swap the pointer)
 This is a void function.
 */
-?? pointerSwap(??)
+void pointerSwap(int* ptr)
 {
-	??
+	int *new_ptr = new int[0];
+	new_ptr[0] = 50;
+	ptr = new_ptr;
+
+
 }
+
+
+
+
 
 
 /*
