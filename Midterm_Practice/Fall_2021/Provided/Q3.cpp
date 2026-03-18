@@ -49,7 +49,7 @@ void ptrsAreReallyFun()
 
 	int ** deAllocPtr = &intermedPtr;
 
-	delete deAllocPtr;
+	delete *deAllocPtr;
 
 
 		
