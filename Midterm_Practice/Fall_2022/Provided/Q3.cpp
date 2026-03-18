@@ -27,9 +27,10 @@ void ptrsAreFun()
 	values[38] = 3.65;
 	double *ptrD = &values[38];
 
-	delete values;
+	delete [] values;
+	// delete values;
 		
-	//Last 4 lines of this section DON'T CHANGE
+	//Last 4 lines of this section DON'T CgitHANGE
 	cout << values[38] << " " << *ptrD << endl;		
 	int *testPtr = new int;
 	*testPtr = 56;
