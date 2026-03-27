@@ -219,6 +219,85 @@ deep copy
 
 
 
+## Inheritance
+
+[Inheritance Slides](./Forouzan_CProgramming_1e_Chap011_PPT_Accessible.pdf)
+
+
+- Protected Inheritance are the members that only be accessed from the derived classes.
+
+There are five member functions that are not inherited
+in the derived class:
+
+1. default constructor
+2. parameter constructor
+3. copy constructor
+4. destructor
+5. assignment operator.
+
+
+## Polymorphism
+
+Generic Programming can be done in object-oriented programming
+
+```cpp
+void specialPrint(Person *ptr)
+{
+    ptr -> print();
+    return;
+}
+
+int main() {
+    Person Dan;
+    Student Joe;
+
+    Person *ptrDan = new Person;
+    ptrDan -> print();
+    Student *ptrJoe = &Joe;
+    ptrJoe -> print();
+
+
+    specialPrint(ptrDan); // Person print()
+    specialPrint(ptrJoe); // Also Person print(), unwanted, need to make the funtion virtual
+}
+```
+
+
+### Friend
+
+```cpp
+class Rectangle
+{
+    private:
+    int width, height;
+
+
+    // can do this because of public: friend in class Square
+    Square s;
+    s.side = 10;
+
+    public:
+    // friend function, can access my private variables for arguments in the function
+    friend int combine(Rectangle r1, Rectangle r2);
+
+
+};
+
+class Square 
+{
+    private:
+    int side;
+
+    public:
+    // friend class give access of my private members to class Rectangle
+    friend class Rectangle; 
+   
+
+};
+
+```
+
+
 
 
 
