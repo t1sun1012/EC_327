@@ -238,7 +238,7 @@ in the derived class:
 
 ## Polymorphism
 
-Generic Programming can be done in object-oriented programming
+Generic Programming in object-oriented programming
 
 ```cpp
 void specialPrint(Person *ptr)
@@ -297,7 +297,103 @@ class Square
 
 ```
 
+## Generic Programming
 
+```cpp
+// can pass base class (Person) and classes derived from it (Athelete, Student, MJ, HSstud, Collstud)
+void salary(Person);
+
+// can only pass class MJ
+void dunk(MJ);
+
+int main() {
+    Person bill;
+    Student Joe;
+    MJ mike;
+    Collstud sally;
+    salary(bill);
+    salary(mike);
+
+}
+
+```
+
+
+One example:
+```cpp
+class Base
+{
+    public:
+    void f1(){};
+    void f2(){};
+};
+
+class D1: public Base
+{
+    public:
+    void f1();
+
+};
+
+class D2: public Base
+{
+    public:
+    void f2();
+};
+
+int main()
+{
+    D1 d1;
+    Base *dptr = &d1;
+    dptr->f1(); // will call f1() in class Base, not in class D1
+
+    // can be solved using virtual function
+}
+
+```
+
+
+Another example with virtual functions
+
+digarams in another pdf
+
+```cpp
+class Base
+{
+    public:
+    virtual void f1(){};
+    virtual void f2(){};
+};
+
+class D1: public Base
+{
+    public:
+    virtual void f1();
+
+};
+
+class D2: public Base
+{
+    public:
+    virtual void f2();
+};
+
+int main()
+{
+    D1 d1;
+    Base *dptr = &d1;
+    dptr->f1(); // will call f1() in class D1, as adding virtual functions
+}
+
+```
+
+1. Make functions virtual
+2. **Use pointers** (this only works with pointers)
+
+
+Remark
+- Do not make constructors virtual
+- Do make destructors virtual to avoid memory leaks
 
 
 
