@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "Point2D.h"
+#include "GameObject.h"
 
 using namespace std;
 
 class GameObject {
-    private:
+    protected:
     Point2D location; // object location
     int id_num; // object ID
     char display_code; // how the object is represented in the View

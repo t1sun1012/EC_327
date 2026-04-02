@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 
+#include "Vector2D.h"
+
 using namespace std;
 
 
@@ -38,6 +40,9 @@ Vector2D operator * (Vector2D v1, double d){
 
 // division operator, vector divided by a value, return vector
 Vector2D operator / (Vector2D v1, double d) {
+    if (d==0) {
+        return v1;
+    }
     return Vector2D(v1.x/d, v1.y/d);
 }
 

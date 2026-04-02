@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 
-#include "Vector2D.h"
+#include "Point2D.h"
 
 using namespace std;
 
