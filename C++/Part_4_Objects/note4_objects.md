@@ -396,4 +396,75 @@ Remark
 - Do make destructors virtual to avoid memory leaks
 
 
+## Exceptions
+- try block
+    - where the exceptional event might happen
+    - throw statements 
+        - throw a typed variable
 
+- Catch block
+    - "catches" a type
+
+
+
+
+
+
+```cpp
+func1()
+{
+    func2()
+    catch(int)
+}
+
+func2()
+{
+    try
+    {
+        throw int
+    }
+    catch (double)
+    catch (bool)
+}
+
+```
+"uncaught exception error"
+
+```cpp
+int num1, num2;
+cin >> num2 >> num2;
+
+try
+{
+    if (num2 == 0)
+        throw num1;
+    // this line skipped if num2 == 0
+    double foo = num1/num2
+}
+
+catch (int ex)
+{
+    cout << ex << "cannot be divided by 0"
+}
+
+
+```
+
+```cpp
+// need try block for this prototype
+void test(int n)throw(int)
+
+
+
+```
+
+
+### Built-in exceptions
+
+exception
+
+- bad_cast
+- bad_alloc
+- runtimeerror
+    - underflow
+    - overflow
