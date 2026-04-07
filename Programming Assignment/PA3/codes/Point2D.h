@@ -34,7 +34,7 @@ double GetDistanceBetween(Point2D p1, Point2D p2);
 // Overloaded Operators
 
 // stream output operator formatting
-ostream& operator << ( ostream& out, Point2D& p1);
+ostream& operator << (ostream& out, const Point2D& p1);
 
 // addition operator, adding point to a vector, return point
 Point2D operator + (Point2D p1, Vector2D v1);

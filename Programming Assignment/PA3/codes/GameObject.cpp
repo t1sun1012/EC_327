@@ -4,45 +4,42 @@
 
 using namespace std;
 
-class GameObject {
-    protected:
-    Point2D location; // object location
-    int id_num; // object ID
-    char display_code; // how the object is represented in the View
-    char state; // state of the object
 
-    public:
-    // constructors
-    GameObject(char in_code) {
-        display_code = in_code;
-        id_num = 1;
-        state = 0;
-        cout << "GameObject constructed";
-    }
+// constructors
 
-    GameObject(Point2D in_loc, int in_id, char in_code) {
-        display_code = in_code;
-        id_num = in_id;
-        location = in_loc;
-        state = 0;
-        cout << "GameObject constructed";
-    }
+GameObject::GameObject(char in_code)
+{
+    display_code = in_code;
+    id_num = 1;
+    state = 0;
+    cout << "GameObject constructed" << endl;
+}
 
-    Point2D GetLocation() {
-        return location;
-    }
+GameObject::GameObject(Point2D in_loc, int in_id, char in_code)
+{
+    location = in_loc;
+    id_num = in_id;
+    display_code = in_code;
+    state = 0;
+    cout << "GameObject constructed" << endl;
+}
 
-    int GetId() {
-        return id_num;
-    }
+Point2D GameObject::GetLocation()
+{
+    return location;
+}
 
-    char GetState() {
-        return state;
-    }
+int GameObject::GetId()
+{
+    return id_num;
+}
 
-    void ShowStatus() {
-        cout << "(" << display_code << ")(" << id_num << ") at " << location; 
-    }
+char GameObject::GetState()
+{
+    return state;
+}
 
-
-};
+void GameObject::ShowStatus()
+{
+    cout << "(" << display_code << ")(" << id_num << ") at " << location;
+}

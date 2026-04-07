@@ -34,7 +34,7 @@ Vector2D operator * (Vector2D v1, double d);
 Vector2D operator / (Vector2D v1, double d);
 
 // stream output operator, formatting output
-ostream& operator << (ostream& out, Vector2D v1);
+ostream& operator << (ostream& out, const Vector2D& v1);
 
 
 
