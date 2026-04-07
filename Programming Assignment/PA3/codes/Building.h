@@ -19,8 +19,9 @@ class Building : public GameObject {
 
     void AddOneMage();
     void RemoveOneMage();
-    void ShowStatus();
-    bool ShouldBeVisible();
+    void ShowStatus() override;
+    bool ShouldBeVisible() override;
+    bool Update() override;
 };
 
 #endif

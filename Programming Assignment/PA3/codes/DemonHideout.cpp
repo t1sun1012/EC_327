@@ -31,6 +31,11 @@ DemonHideout::DemonHideout(unsigned int max_battle, unsigned int mana_loss, doub
     cout << "DemonHideout constructed" << endl;
 }
 
+DemonHideout::~DemonHideout()
+{
+    cout << "DemonHideout destructed." << endl;
+}
+
 // get gold cost
 double DemonHideout::GetGoldCost(unsigned int battle_qty)
 {

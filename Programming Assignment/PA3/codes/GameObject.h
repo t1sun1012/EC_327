@@ -20,14 +20,18 @@ class GameObject {
 
     GameObject(Point2D in_loc, int in_id, char in_code);
 
+    virtual ~GameObject();
+
     Point2D GetLocation();
 
     int GetId();
 
     char GetState();
 
-    void ShowStatus();
-
+    // Derived classes supply object-specific behavior through this interface.
+    virtual void ShowStatus();
+    virtual bool Update() = 0;
+    virtual bool ShouldBeVisible() = 0;
 
 };
 

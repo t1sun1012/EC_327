@@ -24,6 +24,12 @@ GameObject::GameObject(Point2D in_loc, int in_id, char in_code)
     cout << "GameObject constructed" << endl;
 }
 
+GameObject::~GameObject()
+{
+    // virtual so deleting through GameObject* can go to the specific derived object destructor
+    cout << "GameObject destructed." << endl;
+}
+
 Point2D GameObject::GetLocation()
 {
     return location;

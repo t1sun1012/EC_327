@@ -26,6 +26,11 @@ ManaSpire::ManaSpire(int in_id, double crystal_cost, unsigned int crystal_cap, P
     cout << "ManaSpire constructed" << endl;
 }
 
+ManaSpire::~ManaSpire()
+{
+    cout << "ManaSpire destructed." << endl;
+}
+
 // has crystals
 bool ManaSpire::HasCrystals()
 {

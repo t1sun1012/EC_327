@@ -30,15 +30,17 @@ class DemonHideout : public Building {
     DemonHideout(unsigned int max_battle, unsigned int mana_loss, double cost,
         unsigned int exp_per_battle, int in_id, Point2D in_loc);
 
+    ~DemonHideout() override;
+
     double GetGoldCost(unsigned int battle_qty);
     unsigned int GetManaCost(unsigned int battle_qty);
     unsigned int GetNumBattlesRemaining();
     bool IsAbleToBattle(unsigned int battle_qty, double budget, unsigned int mana);
     unsigned int DemonBattle(unsigned int battle_units);
     unsigned int GetExperiencePerBattle();
-    bool Update();
+    bool Update() override;
     bool passed();
-    void ShowStatus();
+    void ShowStatus() override;
 };
 
 #endif

@@ -52,3 +52,8 @@ bool Building::ShouldBeVisible()
 {
     return true;
 }
+
+bool Building::Update()
+{
+    return false;
+}

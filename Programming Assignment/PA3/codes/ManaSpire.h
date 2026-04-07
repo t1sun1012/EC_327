@@ -27,6 +27,8 @@ class ManaSpire : public Building {
     // other constructor
     ManaSpire(int in_id, double crystal_cost, unsigned int crystal_cap, Point2D in_loc);
 
+    ~ManaSpire() override;
+
     // has crystals
     bool HasCrystals();
 
@@ -35,8 +37,8 @@ class ManaSpire : public Building {
     bool CanAffordCrystal(unsigned int crystal, double budget);
     double GetCrystalCost(unsigned int crystal);
     unsigned int DistributeCrystals(unsigned int crystals_needed);
-    bool Update();
-    void ShowStatus();
+    bool Update() override;
+    void ShowStatus() override;
 };
 
 #endif
