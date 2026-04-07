@@ -45,6 +45,12 @@ char GameObject::GetState()
     return state;
 }
 
+void GameObject::DrawSelf(char* ptr)
+{
+    ptr[0] = display_code;
+    ptr[1] = static_cast<char>('0' + id_num);
+}
+
 void GameObject::ShowStatus()
 {
     cout << "(" << display_code << ")(" << id_num << ") at " << location;

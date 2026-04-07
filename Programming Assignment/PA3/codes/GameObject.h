@@ -28,7 +28,10 @@ class GameObject {
 
     char GetState();
 
-    // Derived classes supply object-specific behavior through this interface.
+    // View uses this to ask every object for its two-character grid marker.
+    void DrawSelf(char* ptr);
+
+    // virtual functions for derived classes to implement.
     virtual void ShowStatus();
     virtual bool Update() = 0;
     virtual bool ShouldBeVisible() = 0;

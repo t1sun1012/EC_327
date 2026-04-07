@@ -2,10 +2,9 @@
 #include <cstdlib>
 
 #include "Model.h"
+#include "View.h"
 
 using namespace std;
-
-class View;
 
 Model::Model()
 {
@@ -116,7 +115,14 @@ bool Model::Update()
 
 void Model::Display(View& view)
 {
-    (void)view;
+    cout << "Time: " << time << endl;
+    view.Clear();
+
+    for (int i = 0; i < num_objects; i++) {
+        view.Plot(object_ptrs[i]);
+    }
+
+    view.Draw();
 }
 
 void Model::ShowStatus()

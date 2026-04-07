@@ -10,7 +10,7 @@ using namespace std;
 
 class View;
 
-// These helpers form the controller layer: validate ids through Model, then issue object commands.
+// validate ids through Model, then issue object commands.
 void DoMoveCommand(Model& model, int mage_id, Point2D p1);
 void DoMoveToSpireCommand(Model& model, int mage_id, int spire_id);
 void DoMoveToHideoutCommand(Model& model, int mage_id, int hideout_id);

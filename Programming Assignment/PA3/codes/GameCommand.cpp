@@ -87,21 +87,21 @@ void DoRecoverInSpireCommand(Model& model, int mage_id, unsigned int crystals_ne
 
 void DoAdvanceCommand(Model& model, View& view)
 {
-    (void)view;
     cout << "Advancing one tick." << endl;
     model.Update();
+    model.Display(view);
 }
 
 void DoRunCommand(Model& model, View& view)
 {
     bool event_happened = false;
 
-    (void)view;
     cout << "Advancing to next event." << endl;
 
     // Run stops on the first reported event or after five ticks.
     for (int i = 0; i < 5; i++) {
         event_happened = model.Update();
+        model.Display(view);
         if (event_happened) {
             break;
         }
