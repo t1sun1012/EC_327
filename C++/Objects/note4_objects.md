@@ -468,3 +468,18 @@ exception
 - runtimeerror
     - underflow
     - overflow
+
+
+
+
+## Generic Type
+
+generic types
+
+```cpp
+template<typename T>
+Stack<T>::Stack(): size(0), capacity(16)
+{
+  elements = new T[capacity];
+}
+```
