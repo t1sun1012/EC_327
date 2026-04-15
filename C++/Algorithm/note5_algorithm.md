@@ -1,9 +1,13 @@
 # Algorithms
-- what
-- how
-    - how well
-        - Space 
-        - Time (Big O)
+
+Algorithms:
+- correct
+- performance
+    - Space(memory)
+    - Time
+        - Operations (Big O)
+        - "Wall clock"(Real Time application)
+    
 
 
 ## Sorting
@@ -81,3 +85,11 @@ But merge sort use recursion to implement in code (more function calls), making 
 
 
 ### Heap Sort
+- Binary Tree (complete)
+    - Parent is greater than any children
+
+- Why heap sort even it is slower:
+    - easy to add new element
+
+
+see hand-writting notes
