@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "GameCommand.h"
+#include "Input_Handling.h"
 
 using namespace std;
 
@@ -14,7 +15,8 @@ void DoMoveCommand(Model& model, int mage_id, Point2D p1)
         mage->StartMoving(p1);
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        // Throwing lets main handle every bad command in the same catch block
+        throw Invalid_Input("Please enter a valid Mage ID.");
     }
 }
 
@@ -28,7 +30,7 @@ void DoMoveToSpireCommand(Model& model, int mage_id, int spire_id)
         mage->StartMovingToSpire(spire);
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        throw Invalid_Input("Please enter valid Mage and Mana Spire IDs.");
     }
 }
 
@@ -42,7 +44,7 @@ void DoMoveToHideoutCommand(Model& model, int mage_id, int hideout_id)
         mage->StartMovingToHideout(hideout);
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        throw Invalid_Input("Please enter valid Mage and Demon Hideout IDs.");
     }
 }
 
@@ -55,7 +57,7 @@ void DoStopCommand(Model& model, int mage_id)
         mage->Stop();
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        throw Invalid_Input("Please enter a valid Mage ID.");
     }
 }
 
@@ -68,7 +70,7 @@ void DoBattleCommand(Model& model, int mage_id, unsigned int battles)
         mage->StartBattling(battles);
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        throw Invalid_Input("Please enter a valid Mage ID.");
     }
 }
 
@@ -81,7 +83,7 @@ void DoRecoverInSpireCommand(Model& model, int mage_id, unsigned int crystals_ne
         mage->StartRecoveringMana(crystals_needed);
     }
     else {
-        cout << "Error: Please enter a valid command!" << endl;
+        throw Invalid_Input("Please enter a valid Mage ID.");
     }
 }
 

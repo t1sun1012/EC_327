@@ -59,3 +59,13 @@ PA4 builds on the PA3 Magical Demon Hunters game. The main learning goals are dy
 - Learning point: lists remove the old artificial limit of 10 objects and prepare the program for PA4 Step 4, where new objects are created at runtime.
 - Learning point: there is an important ownership difference between deleting an object and removing one pointer from a list. We remove from `active_ptrs` without deleting, because `object_ptrs` still owns the object.
 
+## Step 3 Notes
+
+- Added `Input_Handling.h` with the `Invalid_Input` exception class from the PA4 handout.
+- Updated `GameCommand` so invalid object IDs throw `Invalid_Input` instead of printing errors directly.
+- Added helper input functions in `main.cpp` for reading integers, non-negative integers, and doubles.
+- Wrapped command handling in a `try`/`catch` block so input errors are reported from one central place.
+- Tested invalid command letters, wrong argument types, invalid Mage IDs, and normal movement after an error.
+- Learning point: exceptions separate the normal command path from error handling. The command code can focus on "what should happen" while the catch block handles recovery.
+- Learning point: after a stream input failure, `cin.clear()` and `cin.ignore(...)` are needed so the next command can be read correctly.
+
