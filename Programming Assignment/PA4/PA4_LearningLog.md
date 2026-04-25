@@ -69,3 +69,18 @@ PA4 builds on the PA3 Magical Demon Hunters game. The main learning goals are dy
 - Learning point: exceptions separate the normal command path from error handling. The command code can focus on "what should happen" while the catch block handles recovery.
 - Learning point: after a stream input failure, `cin.clear()` and `cin.ignore(...)` are needed so the next command can be read correctly.
 
+## Step 4 Notes
+
+- Added the `n TYPE ID X Y` command for creating objects during program execution.
+- Added `Model::NewCommand(char type, int id, Point2D location)` to own the object creation logic.
+- Supported PA4 type codes:
+  - `s` creates a `ManaSpire`
+  - `d` creates a `DemonHideout`
+  - `g` creates a `Mage`
+  - `o` creates a `RoamingDemon`
+- New objects are added to the correct type-specific list, `object_ptrs`, and `active_ptrs`.
+- Duplicate ID checks are type-specific, so a Mage and a ManaSpire can share the same ID, but two Mages cannot.
+- Unknown type codes and duplicate IDs throw `Invalid_Input`.
+- Learning point: replacing arrays with lists in Step 2 made Step 4 much easier, because new objects can be appended without worrying about fixed array capacity.
+- Learning point: `Model` is the right place to create new objects because it owns the object lists and destructor cleanup.
+

@@ -9,6 +9,7 @@
 using namespace std;
 
 void HandleCommand(char command, Model& model, View& view);
+char GetChar();
 int GetInt();
 double GetDouble();
 unsigned int GetUnsignedInt();
@@ -50,6 +51,7 @@ void HandleCommand(char command, Model& model, View& view)
     double x;
     double y;
     unsigned int amount;
+    char type;
 
     switch (command) {
         case 'm':
@@ -88,10 +90,29 @@ void HandleCommand(char command, Model& model, View& view)
         case 'r':
             DoRunCommand(model, view);
             break;
+        case 'n':
+            // n TYPE ID X Y creates a new object through Model so ownership stays centralized
+            type = GetChar();
+            id1 = GetInt();
+            x = GetDouble();
+            y = GetDouble();
+            model.NewCommand(type, id1, Point2D(x, y));
+            break;
         default:
             throw Invalid_Input("Please enter a valid command.");
             break;
     }
+}
+
+char GetChar()
+{
+    char input;
+
+    if (!(cin >> input)) {
+        throw Invalid_Input("Was expecting a character.");
+    }
+
+    return input;
 }
 
 int GetInt()

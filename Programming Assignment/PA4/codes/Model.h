@@ -34,6 +34,8 @@ class Model {
     ManaSpire* GetManaSpirePtr(int id);
     DemonHideout* GetDemonHideoutPtr(int id);
     RoamingDemon* GetRoamingDemonPtr(int id);
+    // Creates runtime objects for new TYPE ID X Y command.
+    void NewCommand(char type, int id, Point2D location);
     bool Update();
     void Display(View& view);
     void ShowStatus();

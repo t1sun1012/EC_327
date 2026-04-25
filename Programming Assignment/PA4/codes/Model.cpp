@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Input_Handling.h"
 #include "Model.h"
 #include "View.h"
 
@@ -91,6 +92,60 @@ RoamingDemon* Model::GetRoamingDemonPtr(int id)
         }
     }
     return 0;
+}
+
+void Model::NewCommand(char type, int id, Point2D location)
+{
+    GameObject* new_object = 0;
+
+    // Model owns all object lists, is responsible for allocating and linking new objects
+    // Each type has its own ID namespace, so duplicate checks stay type-specific.
+    switch (type) {
+        case 's': {
+            if (GetManaSpirePtr(id) != 0) {
+                throw Invalid_Input("Mana Spire ID already exists.");
+            }
+            ManaSpire* spire = new ManaSpire(id, 5, 100, location);
+            spire_ptrs.push_back(spire);
+            new_object = spire;
+            break;
+        }
+        case 'd': {
+            if (GetDemonHideoutPtr(id) != 0) {
+                throw Invalid_Input("Demon Hideout ID already exists.");
+            }
+            DemonHideout* hideout = new DemonHideout(10, 1, 1.0, 2, id, location);
+            hideout_ptrs.push_back(hideout);
+            new_object = hideout;
+            break;
+        }
+        case 'g': {
+            if (GetMagePtr(id) != 0) {
+                throw Invalid_Input("Mage ID already exists.");
+            }
+            // Runtime-created Mages use previous default speed and a generic name.
+            Mage* mage = new Mage("Mage", id, 'M', 5, location);
+            mage_ptrs.push_back(mage);
+            new_object = mage;
+            break;
+        }
+        case 'o': {
+            if (GetRoamingDemonPtr(id) != 0) {
+                throw Invalid_Input("Roaming Demon ID already exists.");
+            }
+            RoamingDemon* demon = new RoamingDemon("RoamingDemon", 5, 2, false, id, location);
+            roamingdemon_ptrs.push_back(demon);
+            new_object = demon;
+            break;
+        }
+        default:
+            throw Invalid_Input("Please enter a valid object type.");
+    }
+
+    // Newly created objects are owned by object_ptrs and immediately active.
+    object_ptrs.push_back(new_object);
+    active_ptrs.push_back(new_object);
+    cout << "New object created." << endl;
 }
 
 bool Model::Update()
