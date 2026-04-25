@@ -48,3 +48,14 @@ PA4 builds on the PA3 Magical Demon Hunters game. The main learning goals are dy
 - Learning point: inheritance let us add `RoamingDemon` with minimal changes to `View`, because `View` already plots any `GameObject*` through polymorphism.
 - Learning point: adding a new interacting object still required careful coordination between classes: `Model` detects contact, `RoamingDemon` records who it follows, and `Mage` applies the gameplay penalty.
 
+## Step 2 Notes
+
+- Replaced the fixed-size arrays in `Model` with STL `list` containers.
+- Added `active_ptrs`, which stores the objects that should still be updated and displayed.
+- Kept `object_ptrs` as the ownership list. The destructor deletes objects from `object_ptrs`, so even objects removed from `active_ptrs` still get cleaned up.
+- Kept type-specific lists for command lookup: `mage_ptrs`, `spire_ptrs`, `hideout_ptrs`, and `roamingdemon_ptrs`.
+- Updated `Model::Update()`, `Display()`, `ShowStatus()`, and all `Get*Ptr()` functions to use list iterators.
+- Added a removal pass in `Model::Update()` that removes non-visible objects from `active_ptrs` and prints `Dead object removed.`
+- Learning point: lists remove the old artificial limit of 10 objects and prepare the program for PA4 Step 4, where new objects are created at runtime.
+- Learning point: there is an important ownership difference between deleting an object and removing one pointer from a list. We remove from `active_ptrs` without deleting, because `object_ptrs` still owns the object.
+

@@ -2,6 +2,7 @@
 #define MODEL_H
 
 #include <iostream>
+#include <list>
 
 #include "DemonHideout.h"
 #include "GameObject.h"
@@ -16,19 +17,14 @@ class View;
 class Model {
     private:
     int time;
-    // The model owns every live game object and updates them all together.
-    GameObject* object_ptrs[10];
-    int num_objects;
-    // Type-specific arrays support validated lookups for controller commands.
-    Mage* mage_ptrs[10];
-    int num_mages;
-    ManaSpire* spire_ptrs[10];
-    int num_spires;
-    DemonHideout* hideout_ptrs[10];
-    int num_hideouts;
-    // Step 1 keeps arrays temporarily; Step 2 will replace them with STL containers.
-    RoamingDemon* roamingdemon_ptrs[10];
-    int num_roamingdemons;
+    // object_ptrs owns every object; active_ptrs tracks objects still updated/displayed.
+    list<GameObject*> object_ptrs;
+    list<GameObject*> active_ptrs;
+    // Type-specific lists support validated lookups for controller commands.
+    list<Mage*> mage_ptrs;
+    list<ManaSpire*> spire_ptrs;
+    list<DemonHideout*> hideout_ptrs;
+    list<RoamingDemon*> roamingdemon_ptrs;
 
     public:
     Model();
