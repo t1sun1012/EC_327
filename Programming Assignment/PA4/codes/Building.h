@@ -20,6 +20,8 @@ class Building : public GameObject {
     void AddOneMage();
     void RemoveOneMage();
     void ShowStatus() override;
+    void save(ofstream& file) override;
+    void restore(ifstream& file, Model& model) override;
     bool ShouldBeVisible() override;
     bool Update() override;
 };

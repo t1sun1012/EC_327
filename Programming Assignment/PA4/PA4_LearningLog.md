@@ -84,3 +84,17 @@ PA4 builds on the PA3 Magical Demon Hunters game. The main learning goals are dy
 - Learning point: replacing arrays with lists in Step 2 made Step 4 much easier, because new objects can be appended without worrying about fixed array capacity.
 - Learning point: `Model` is the right place to create new objects because it owns the object lists and destructor cleanup.
 
+## Step 5 Notes
+
+- Added `save(ofstream& file)` and `restore(ifstream& file, Model& model)` to the `GameObject` hierarchy.
+- Each derived class saves/restores its own fields after calling its superclass version, following the same pattern as `ShowStatus()`.
+- Added `Model::save()` to write the current time, an active-object catalog, and then each active object's data.
+- Added `Model::restore()` to delete the current world, recreate objects from the catalog, and then restore the saved field values.
+- Added commands:
+  - `S filename` saves the game.
+  - `R filename` restores the game.
+- Pointer fields are saved as object IDs instead of memory addresses. For example, a Mage saves the ID of its current spire, hideout, or demon.
+- Tested saving/restoring at startup and saving/restoring after adding new objects and making a RoamingDemon follow a Mage.
+- Learning point: the save order and restore order must match exactly because file streams are sequential.
+- Learning point: raw pointer addresses cannot be persisted. Object IDs are the stable information that lets the restored model reconnect relationships.
+

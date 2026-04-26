@@ -2,6 +2,7 @@
 
 #include "RoamingDemon.h"
 #include "Mage.h"
+ #include "Model.h"
 
 using namespace std;
 
@@ -110,4 +111,27 @@ void RoamingDemon::ShowStatus()
     cout << "Attack: " << attack << endl;
     cout << "Health: " << health << endl;
     cout << "Variant: " << variant << endl;
+}
+
+void RoamingDemon::save(ofstream& file)
+{
+    int mage_id = -1;
+
+    if (current_mage != NULL) {
+        mage_id = current_mage->GetId();
+    }
+
+    GameObject::save(file);
+    file << attack << ' ' << health << ' ' << variant << ' '
+         << in_combat << ' ' << name << ' ' << mage_id << endl;
+}
+
+void RoamingDemon::restore(ifstream& file, Model& model)
+{
+    int mage_id;
+
+    GameObject::restore(file, model);
+    file >> attack >> health >> variant >> in_combat >> name >> mage_id;
+    // Convert the saved Mage ID back into a pointer in the restored Model.
+    current_mage = (mage_id == -1) ? NULL : model.GetMagePtr(mage_id);
 }

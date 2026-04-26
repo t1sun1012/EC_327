@@ -66,6 +66,8 @@ class Mage : public GameObject {
     bool ShouldBeVisible() override;
     void ShowStatus() override;
     bool Update() override;
+    void save(ofstream& file) override;
+    void restore(ifstream& file, Model& model) override;
     string GetName();
     // Called by RoamingDemon::follow after Model detects contact.
     void StartBeingFollowed(RoamingDemon* demon);

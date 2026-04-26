@@ -57,3 +57,15 @@ bool Building::Update()
 {
     return false;
 }
+
+void Building::save(ofstream& file)
+{
+    GameObject::save(file);
+    file << mage_count << endl;
+}
+
+void Building::restore(ifstream& file, Model& model)
+{
+    GameObject::restore(file, model);
+    file >> mage_count;
+}

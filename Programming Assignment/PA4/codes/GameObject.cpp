@@ -55,3 +55,18 @@ void GameObject::ShowStatus()
 {
     cout << "(" << display_code << ")(" << id_num << ") at " << location;
 }
+
+void GameObject::save(ofstream& file)
+{
+    // Save base fields first so derived restore functions can read in the same order.
+    file << location.x << ' ' << location.y << ' ' << id_num << ' '
+         << display_code << ' ' << static_cast<int>(state) << endl;
+}
+
+void GameObject::restore(ifstream& file, Model& model)
+{
+    int state_value;
+
+    file >> location.x >> location.y >> id_num >> display_code >> state_value;
+    state = static_cast<char>(state_value);
+}

@@ -41,6 +41,8 @@ class DemonHideout : public Building {
     bool Update() override;
     bool passed();
     void ShowStatus() override;
+    void save(ofstream& file) override;
+    void restore(ifstream& file, Model& model) override;
 };
 
 #endif

@@ -1,11 +1,14 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <fstream>
 #include <iostream>
 
 #include "Point2D.h"
 
 using namespace std;
+
+class Model;
 
 class GameObject {
     protected:
@@ -33,6 +36,8 @@ class GameObject {
 
     // virtual functions for derived classes to implement.
     virtual void ShowStatus();
+    virtual void save(ofstream& file);
+    virtual void restore(ifstream& file, Model& model);
     virtual bool Update() = 0;
     virtual bool ShouldBeVisible() = 0;
 

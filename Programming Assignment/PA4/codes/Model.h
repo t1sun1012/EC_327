@@ -1,6 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include <fstream>
 #include <iostream>
 #include <list>
 
@@ -36,6 +37,8 @@ class Model {
     RoamingDemon* GetRoamingDemonPtr(int id);
     // Creates runtime objects for new TYPE ID X Y command.
     void NewCommand(char type, int id, Point2D location);
+    void save(ofstream& file);
+    void restore(ifstream& file);
     bool Update();
     void Display(View& view);
     void ShowStatus();

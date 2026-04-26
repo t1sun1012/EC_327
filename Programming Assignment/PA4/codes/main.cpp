@@ -1,5 +1,7 @@
+#include <fstream>
 #include <iostream>
 #include <limits>
+#include <string>
 
 #include "GameCommand.h"
 #include "Input_Handling.h"
@@ -13,6 +15,7 @@ char GetChar();
 int GetInt();
 double GetDouble();
 unsigned int GetUnsignedInt();
+string GetString();
 
 int main()
 {
@@ -52,6 +55,7 @@ void HandleCommand(char command, Model& model, View& view)
     double y;
     unsigned int amount;
     char type;
+    string filename;
 
     switch (command) {
         case 'm':
@@ -98,6 +102,32 @@ void HandleCommand(char command, Model& model, View& view)
             y = GetDouble();
             model.NewCommand(type, id1, Point2D(x, y));
             break;
+        case 'S': {
+            // Save files are plain text so they can be inspected for debugging
+            filename = GetString();
+            ofstream save_file(filename.c_str());
+            if (!save_file) {
+                throw Invalid_Input("Could not open save file.");
+            }
+            model.save(save_file);
+            save_file.close();
+            cout << "Game saved." << endl;
+            break;
+        }
+        case 'R': {
+            // Restoring replaces the current model contents with the file contents
+            filename = GetString();
+            ifstream restore_file(filename.c_str());
+            if (!restore_file) {
+                throw Invalid_Input("Could not open restore file.");
+            }
+            model.restore(restore_file);
+            restore_file.close();
+            cout << "Game restored." << endl;
+            model.ShowStatus();
+            model.Display(view);
+            break;
+        }
         default:
             throw Invalid_Input("Please enter a valid command.");
             break;
@@ -148,4 +178,15 @@ unsigned int GetUnsignedInt()
     }
 
     return static_cast<unsigned int>(input);
+}
+
+string GetString()
+{
+    string input;
+
+    if (!(cin >> input)) {
+        throw Invalid_Input("Was expecting a filename.");
+    }
+
+    return input;
 }

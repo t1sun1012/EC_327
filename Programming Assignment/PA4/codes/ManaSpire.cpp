@@ -93,3 +93,16 @@ void ManaSpire::ShowStatus()
     cout << "Gold pieces per crystal: " << cost_per_crystal << endl;
     cout << "has " << num_crystals_remaining << " crystal(s) remaining." << endl;
 }
+
+void ManaSpire::save(ofstream& file)
+{
+    Building::save(file);
+    file << crystal_capacity << ' ' << num_crystals_remaining << ' '
+         << cost_per_crystal << endl;
+}
+
+void ManaSpire::restore(ifstream& file, Model& model)
+{
+    Building::restore(file, model);
+    file >> crystal_capacity >> num_crystals_remaining >> cost_per_crystal;
+}

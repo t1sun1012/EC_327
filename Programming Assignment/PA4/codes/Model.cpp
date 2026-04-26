@@ -7,6 +7,24 @@
 
 using namespace std;
 
+char GetObjectTypeCode(GameObject* object)
+{
+    if (dynamic_cast<Mage*>(object) != 0) {
+        return 'M';
+    }
+    if (dynamic_cast<ManaSpire*>(object) != 0) {
+        return 'S';
+    }
+    if (dynamic_cast<DemonHideout*>(object) != 0) {
+        return 'D';
+    }
+    if (dynamic_cast<RoamingDemon*>(object) != 0) {
+        return 'W';
+    }
+
+    throw Invalid_Input("Cannot save unknown object type.");
+}
+
 Model::Model()
 {
     time = 0;
@@ -234,5 +252,87 @@ void Model::ShowStatus()
     cout << "Time: " << time << endl;
     for (list<GameObject*>::iterator it = object_ptrs.begin(); it != object_ptrs.end(); it++) {
         (*it)->ShowStatus();
+    }
+}
+
+void Model::save(ofstream& file)
+{
+    file << time << endl;
+    file << active_ptrs.size() << endl;
+
+    // Catalog: write each active object's type and ID before its detailed data.
+    // Restore uses this catalog to allocate the right objects before reconnecting pointers.
+    for (list<GameObject*>::iterator it = active_ptrs.begin(); it != active_ptrs.end(); it++) {
+        file << GetObjectTypeCode(*it) << ' ' << (*it)->GetId() << endl;
+    }
+
+    // Object data is written in the same order as the catalog.
+    for (list<GameObject*>::iterator it = active_ptrs.begin(); it != active_ptrs.end(); it++) {
+        (*it)->save(file);
+    }
+}
+
+void Model::restore(ifstream& file)
+{
+    int object_count;
+
+    // Delete current objects before rebuilding the lists from the save file.
+    for (list<GameObject*>::iterator it = object_ptrs.begin(); it != object_ptrs.end(); it++) {
+        delete *it;
+    }
+    object_ptrs.clear();
+    active_ptrs.clear();
+    mage_ptrs.clear();
+    spire_ptrs.clear();
+    hideout_ptrs.clear();
+    roamingdemon_ptrs.clear();
+
+    file >> time;
+    file >> object_count;
+
+    // First pass: rebuild empty objects from the catalog so ID lookups work.
+    for (int i = 0; i < object_count; i++) {
+        char type;
+        int id;
+        GameObject* object = 0;
+
+        file >> type >> id;
+
+        switch (type) {
+            case 'M': {
+                Mage* mage = new Mage("Mage", id, 'M', 5, Point2D());
+                mage_ptrs.push_back(mage);
+                object = mage;
+                break;
+            }
+            case 'S': {
+                ManaSpire* spire = new ManaSpire(id, 5, 100, Point2D());
+                spire_ptrs.push_back(spire);
+                object = spire;
+                break;
+            }
+            case 'D': {
+                DemonHideout* hideout = new DemonHideout(10, 1, 1.0, 2, id, Point2D());
+                hideout_ptrs.push_back(hideout);
+                object = hideout;
+                break;
+            }
+            case 'W': {
+                RoamingDemon* demon = new RoamingDemon("RoamingDemon", 5, 2, false, id, Point2D());
+                roamingdemon_ptrs.push_back(demon);
+                object = demon;
+                break;
+            }
+            default:
+                throw Invalid_Input("Save file contains an unknown object type.");
+        }
+
+        object_ptrs.push_back(object);
+        active_ptrs.push_back(object);
+    }
+
+    // Second pass: restore fields and reconnect saved object-ID relationships.
+    for (list<GameObject*>::iterator it = object_ptrs.begin(); it != object_ptrs.end(); it++) {
+        (*it)->restore(file, *this);
     }
 }

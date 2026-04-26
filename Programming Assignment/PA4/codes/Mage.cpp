@@ -5,6 +5,7 @@
 #include "Mage.h"
 #include "DemonHideout.h"
 #include "ManaSpire.h"
+#include "Model.h"
 
 using namespace std;
 
@@ -501,4 +502,49 @@ bool Mage::Update()
         default:
             return false;
     }
+}
+
+void Mage::save(ofstream& file)
+{
+    int spire_id = -1;
+    int hideout_id = -1;
+    int demon_id = -1;
+
+    if (current_spire != NULL) {
+        spire_id = current_spire->GetId();
+    }
+    if (current_hideout != NULL) {
+        hideout_id = current_hideout->GetId();
+    }
+    if (current_demon != NULL) {
+        demon_id = current_demon->GetId();
+    }
+
+    GameObject::save(file);
+    // Pointer fields are saved by ID because memory addresses are not persistent.
+    file << speed << ' ' << is_at_spire << ' ' << is_in_hideout << ' '
+         << mana << ' ' << experience << ' ' << gold_pieces << ' '
+         << battles_to_buy << ' ' << crystals_to_buy << ' ' << name << ' '
+         << spire_id << ' ' << hideout_id << ' ' << demon_id << ' '
+         << destination.x << ' ' << destination.y << ' '
+         << delta.x << ' ' << delta.y << endl;
+}
+
+void Mage::restore(ifstream& file, Model& model)
+{
+    int spire_id;
+    int hideout_id;
+    int demon_id;
+
+    GameObject::restore(file, model);
+    file >> speed >> is_at_spire >> is_in_hideout
+         >> mana >> experience >> gold_pieces
+         >> battles_to_buy >> crystals_to_buy >> name
+         >> spire_id >> hideout_id >> demon_id
+         >> destination.x >> destination.y >> delta.x >> delta.y;
+
+    // Reconnect saved IDs to the newly allocated objects in Model.
+    current_spire = (spire_id == -1) ? NULL : model.GetManaSpirePtr(spire_id);
+    current_hideout = (hideout_id == -1) ? NULL : model.GetDemonHideoutPtr(hideout_id);
+    current_demon = (demon_id == -1) ? NULL : model.GetRoamingDemonPtr(demon_id);
 }

@@ -39,6 +39,8 @@ class ManaSpire : public Building {
     unsigned int DistributeCrystals(unsigned int crystals_needed);
     bool Update() override;
     void ShowStatus() override;
+    void save(ofstream& file) override;
+    void restore(ifstream& file, Model& model) override;
 };
 
 #endif

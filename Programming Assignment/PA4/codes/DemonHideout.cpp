@@ -112,3 +112,19 @@ void DemonHideout::ShowStatus()
     cout << "Experience per battle: " << experience_per_battle << endl;
     cout << num_battle_remaining << " battle(s) are remaining for this DemonHideout" << endl;
 }
+
+void DemonHideout::save(ofstream& file)
+{
+    Building::save(file);
+    file << num_battle_remaining << ' ' << max_number_of_battles << ' '
+         << mana_cost_per_battle << ' ' << gold_cost_per_battle << ' '
+         << experience_per_battle << endl;
+}
+
+void DemonHideout::restore(ifstream& file, Model& model)
+{
+    Building::restore(file, model);
+    file >> num_battle_remaining >> max_number_of_battles
+         >> mana_cost_per_battle >> gold_cost_per_battle
+         >> experience_per_battle;
+}

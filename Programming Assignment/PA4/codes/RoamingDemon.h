@@ -43,6 +43,8 @@ class RoamingDemon : public GameObject {
     bool Update() override;
     bool ShouldBeVisible() override;
     void ShowStatus() override;
+    void save(ofstream& file) override;
+    void restore(ifstream& file, Model& model) override;
 };
 
 #endif
