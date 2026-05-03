@@ -35,7 +35,7 @@ class Student
 			return classesTaken;
 		}	
 		
-		void setStudied(bool s)
+		virtual void setStudied(bool s)
 		{
 			studied = s;
 		}
@@ -51,6 +51,19 @@ class Student
 
 
 //Add Slacker class here
+class Slacker : public Student {
+	public:
+		Slacker() {
+			studied = false;
+			iq = 1/2 * 200;
+			gpa = 1/5 * 4.0;
+			classesTaken = 1/4 * 100;
+		}
+
+		void setStudied(bool s) override {
+			studied = false;
+		}
+};
 
 
 //DO NOT CHANGE
@@ -70,11 +83,11 @@ int main()
   s->setStudied(true);
   printStudent(s);
   
-  /*
+  
   Student *slack = new Slacker();
   slack->setStudied(true);
   printStudent(slack);
-  */
+  
   
   cout << "Q2 compiles" << endl;
   
