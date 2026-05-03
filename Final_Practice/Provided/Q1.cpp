@@ -3,6 +3,10 @@ using namespace std;
 
 class Student
 {
+	// give .print() function access to main()
+	
+	friend int main();
+
 	public: 
 		
 		//DO NOT CHANGE
@@ -15,7 +19,15 @@ class Student
 		}
 		
 		//Add two accessor methods here
-   
+		bool getStudy() const {
+			return studied;
+		}
+
+		int getIq() const {
+			return iq;
+		}
+		
+
 		//MUST STAY PUBLIC
 		double gpa;
 		int classesTaken;
@@ -42,12 +54,19 @@ class Professor
 {
 	public: 
 	
+
+
 	//Add "addClass" function here
 	//Parameter - Student
 	/*
 		If the willPass function returns true then the classesTaken 
 		for the student should be incremented.
 	*/
+	void addClass(Student& student) {
+		if (willPass(student)) {
+			student.classesTaken++;
+		}
+	}
 	
 	//Add willPass function here
 	//Parameter - Student
@@ -59,6 +78,17 @@ class Professor
 		they have taken.
 	
 	*/
+	bool willPass(Student& student) {
+		if ((student.getStudy() == true) || (student.getIq() > 90 )) {
+			return true;
+		}
+		else {
+			if (student.gpa < 3) {
+				student.classesTaken--;
+			}
+			return false;
+		}
+	}
 };
 
 
@@ -75,21 +105,21 @@ int main()
   Student s4(false, 80, 2.0, 1);
   
   //Uncomment when done
-  /*
+  
   p.addClass(s1);
   p.addClass(s2);
   p.addClass(s3);
   p.addClass(s4);
-  */
+
   
   //Uncomment when done. YOU CANNOT MOVE the print function to public
   //How to give main access to print?
-  /*
+  
   s1.print();
   s2.print();
   s3.print();
   s4.print();
-  */
+
   
   cout << "Q1 compiles" << endl;
   
