@@ -55,9 +55,9 @@ class Slacker : public Student {
 	public:
 		Slacker() {
 			studied = false;
-			iq = 1/2 * 200;
-			gpa = 1/5 * 4.0;
-			classesTaken = 1/4 * 100;
+			iq = iq / 2.0;
+			gpa = gpa / 5.0;
+			classesTaken = classesTaken / 4.0;
 		}
 
 		void setStudied(bool s) override {
