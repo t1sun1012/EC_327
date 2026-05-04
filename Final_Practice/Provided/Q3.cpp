@@ -41,9 +41,10 @@ class StudiesException : public exception {
 //All it needs in one public method - void setStudied(bool s)
 //This function should throw the appropriate exception
 class Slacker : public Student {
-	void setStudied(bool s) override {
-		throw StudiesException(this);
-	}
+	public:
+		void setStudied(bool s) override {
+			throw StudiesException(this);
+		}
 };
 
 
