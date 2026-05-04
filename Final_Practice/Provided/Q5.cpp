@@ -61,9 +61,12 @@ T *replace(T list[ ], int listSize, T insert, T target) {
   T* result = new T[listSize];
   for (int i = 0; i<listSize; i++) {
     if (list[i] == target) {
-      list[i] = insert;
+      result[i] = insert;
     }
-    result[i] = list[i];
+    else{
+    result[i] = list[i]; 
+    }
+
   }
   return result;
 }
