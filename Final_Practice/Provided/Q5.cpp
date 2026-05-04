@@ -19,9 +19,20 @@ of elements as the orginal array but removes the target elements
 */
 template<typename T>
 T *destroy(T list[ ], int listSize, int &destroyedSize, T target) {
+  int target_count = 0;
+  for(int i=0;i<listSize;i++) {
+    if (list[i] == target) {
+      target_count++;
+    }
+  }
+
+  destroyedSize = listSize - target_count;
+
   T* result_list = new T[destroyedSize];
+
+
   int j = 0;
-  for (int i = 0; i < listSize, j<destroyedSize; i++) {
+  for (int i = 0; i < listSize; i++) {
     if (list[i] != target) {
       result_list[j] = list[i];
       j++;
