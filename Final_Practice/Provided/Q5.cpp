@@ -15,7 +15,23 @@ target - what you want to remove from the array
 This function should make a new array that has the same order
 of elements as the orginal array but removes the target elements
 
+
 */
+template<typename T>
+T *destroy(T list[ ], int listSize, int &destroyedSize, T target) {
+  T* result_list = new T[destroyedSize];
+  int j = 0;
+  for (int i = 0; i < listSize, j<destroyedSize; i++) {
+    if (list[i] != target) {
+      result_list[j] = list[i];
+      j++;
+    }
+  }
+  return result_list;
+}
+
+
+
 
 //Put replace function here
 /*
@@ -29,6 +45,17 @@ This function should return an array that is the same
 as the list BUT has all the targets replaced with insert
 
 */
+template<typename T>
+T *replace(T list[ ], int listSize, T insert, T target) {
+  T* result = new T[listSize];
+  for (int i = 0; i<listSize; i++) {
+    if (list[i] == target) {
+      list[i] = insert;
+    }
+    result[i] = list[i];
+  }
+  return result;
+}
 
 
 
@@ -50,31 +77,31 @@ int main()
   int realSize;
   
   //Uncomment when done
-  /*
+  
   int *destroyedList1 = destroy(list1, 11, realSize, 1);
   printArray(destroyedList1, realSize);
   int *replaceList1 = replace(list1, 11, 99, 1);
   printArray(replaceList1, 11);
-  */
+  
   
   
   double list2[] = {3.5, 0.5, 1.4, 0.4, 2.5, 1.8, 4.7, 2.5};
   //Uncomment when done
-  /*
+  
   double *destroyedList2 = destroy(list2, 8, realSize, 2.5);
   printArray(destroyedList2, realSize);
   double *replaceList2 = replace(list2, 8, 4.0, 3.5);
   printArray(replaceList2, 8);
- */
+ 
   
   char list3[] = {'B', 'C', 'B', 'L', 'B', 'B', 'H'};
   //Uncomment when done
-  /*
+  
   char *destroyedList3 = destroy(list3, 7, realSize, 'B');
   printArray(destroyedList3, realSize);
   char *replaceList3 = replace(list3, 7, '9', 'B');
   printArray(replaceList3, 7);
-  */
+  
   
   cout << "Q5 compiles" << endl;
 }
