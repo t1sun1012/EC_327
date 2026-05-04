@@ -62,7 +62,7 @@ int ret() {
 //Format: func1 func2 func3 func4 \n
 void clearStack() {
   while (!callstack.empty()) {
-    cout << ' ' << callstack.top().name;
+    cout << callstack.top().name << ' ';
     callstack.pop();
   }
   cout << '\n';
