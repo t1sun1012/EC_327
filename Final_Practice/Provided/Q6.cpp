@@ -34,23 +34,46 @@ stack<Function> callstack;
 //Add the call function here
 //This needs to add a function object to the stack
 
+void call(string func_name, int val) {
+  callstack.push(Function(func_name,val));
+}
 
 //Add the ret function here
 //This needs to return an int that is the value of the Function object on the top of the stack
 //Pop the stack as well
 //Make sure something is on the stack; If not just return 0
+int ret() {
+  if (callstack.empty()) {
+    return 0;
+  }
+  else {
+    int value = 0;
+    value = callstack.top().value;
+    callstack.pop();
+    return value;
+  }
+
+
+}
 
 //Add the clearStack function here
 //Print the name of each function on the stack
 //Remove the elements along the way (should be empty when done)
 //Format: func1 func2 func3 func4 \n
+void clearStack() {
+  while (!callstack.empty()) {
+    cout << ' ' << callstack.top().name;
+    callstack.pop();
+  }
+  cout << '\n';
+}
 
 
 //DO NOT CHANGE; Just uncomment
 int main ()
 {
   int value = 0;
-  /*
+  
   call("Foo", 10);
   call("Fah", 11);
   value += ret();
@@ -69,7 +92,7 @@ int main ()
   clearStack();
   value += ret();
   value += ret();
-  */
+  
   cout << "Final Value "<< value << endl;
   
   return 0;
